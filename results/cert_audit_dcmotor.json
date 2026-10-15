@@ -1,0 +1,208 @@
+{
+ "bench": "dcmotor",
+ "comparisons": {
+  "rho": {
+   "independent": 0.9044218534140845,
+   "reported": 0.9044218534140843,
+   "max_abs_diff": 2.220446049250313e-16,
+   "match": true
+  },
+  "alpha": {
+   "independent": 0.9474865297305538,
+   "reported": 0.9474865297305536,
+   "max_abs_diff": 2.220446049250313e-16,
+   "match": true
+  },
+  "beta": {
+   "independent": 1.0014813410177326,
+   "reported": 1.0014813410177326,
+   "max_abs_diff": 0.0,
+   "match": true
+  },
+  "c0": {
+   "independent": 0.018815840099331276,
+   "reported": 0.018815840099331276,
+   "max_abs_diff": 0.0,
+   "match": true
+  },
+  "kappa": {
+   "independent": 0.6267610945812229,
+   "reported": 0.6267610945812229,
+   "max_abs_diff": 0.0,
+   "match": true
+  },
+  "ell": {
+   "independent": 2.785894265232167,
+   "reported": 2.785894265232167,
+   "max_abs_diff": 0.0,
+   "match": true
+  },
+  "qbar": {
+   "independent": 2.0184605144072667,
+   "reported": 2.018460514407256,
+   "max_abs_diff": 1.0658141036401503e-14,
+   "match": true
+  },
+  "rbar": {
+   "independent": [
+    0.2961517077396533,
+    1.9947366289854969
+   ],
+   "reported": [
+    0.29615170773965327,
+    1.9947366289854835
+   ],
+   "max_abs_diff": 1.3322676295501878e-14,
+   "match": true
+  },
+  "sigma": {
+   "independent": [
+    0.798724245519505,
+    1.4358046713831953
+   ],
+   "reported": [
+    0.798724245519505,
+    1.4358046713831953
+   ],
+   "max_abs_diff": 0.0,
+   "match": true
+  },
+  "p": {
+   "independent": [
+    1.4358046713831953,
+    0.7987242455195049
+   ],
+   "reported": [
+    1.4358046713831953,
+    0.7987242455195049
+   ],
+   "max_abs_diff": 0.0,
+   "match": true
+  },
+  "KR": {
+   "independent": [
+    [
+     -0.479968464821066,
+     -0.49995834098436764
+    ]
+   ],
+   "reported": [
+    [
+     -0.479968464821066,
+     -0.49995834098436764
+    ]
+   ],
+   "max_abs_diff": 0.0,
+   "match": true
+  },
+  "dA": {
+   "independent": [
+    [
+     0.015265141054282193,
+     2.7880532292344568e-05
+    ],
+    [
+     0.023152449191737434,
+     1.6828934642545425e-05
+    ]
+   ],
+   "reported": [
+    [
+     0.015265141054282193,
+     2.7880532292344568e-05
+    ],
+    [
+     0.023152449191737434,
+     1.6828934642545425e-05
+    ]
+   ],
+   "max_abs_diff": 0.0,
+   "match": true
+  },
+  "dB": {
+   "independent": [
+    [
+     0.008910653693880164
+    ],
+    [
+     0.005378548984096035
+    ]
+   ],
+   "reported": [
+    [
+     0.008910653693880164
+    ],
+    [
+     0.005378548984096035
+    ]
+   ],
+   "max_abs_diff": 0.0,
+   "match": true
+  },
+  "dE": {
+   "independent": [
+    [
+     4.327911720892648e-05
+    ],
+    [
+     5.8301478357259683e-05
+    ]
+   ],
+   "reported": [
+    [
+     4.327911720892648e-05
+    ],
+    [
+     5.8301478357259683e-05
+    ]
+   ],
+   "max_abs_diff": 0.0,
+   "match": true
+  },
+  "C2_lhs": {
+   "independent": 2.767399524226451,
+   "reported": 2.76739952422645,
+   "max_abs_diff": 8.881784197001252e-16,
+   "match": true
+  },
+  "C2_margin": {
+   "independent": 0.018494741005716353,
+   "reported": 0.01849474100571724,
+   "max_abs_diff": 8.881784197001252e-16,
+   "match": true
+  },
+  "C1": {
+   "independent": 1.0,
+   "reported": true,
+   "max_abs_diff": 0.0,
+   "match": true
+  },
+  "C3": {
+   "independent": true,
+   "reported": true,
+   "max_abs_diff": 0.0,
+   "match": true
+  },
+  "C4": {
+   "independent": true,
+   "reported": true,
+   "max_abs_diff": 0.0,
+   "match": true
+  },
+  "C5": {
+   "independent": true,
+   "reported": true,
+   "max_abs_diff": 0.0,
+   "match": true
+  }
+ },
+ "all_match": true,
+ "independent_sampled_key_inequality_worst_slack": -0.07234804880521617,
+ "n_samples": 100000,
+ "fine_grid_uncertainty_check": {
+  "ok": true,
+  "max_ratio_to_reported": 0.9803921568627452,
+  "n_points": 9561
+ },
+ "note": "P is the searched design matrix (reused); everything else recomputed independently."
+}

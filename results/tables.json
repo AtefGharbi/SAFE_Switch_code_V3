@@ -1,0 +1,846 @@
+{
+ "risk": {
+  "auc": 0.8314643234457538,
+  "brier": 0.14021354091628335,
+  "ece": 0.03593917420690651,
+  "tpr": 0.44962616822429907,
+  "fpr": 0.04727272727272727,
+  "base_rate": 0.2972222222222222,
+  "n_train": 96000,
+  "n_test": 36000
+ },
+ "TABLE_RISK": ": TABLE II. Attack-risk model on held-out episodes (step-level labels: attack interval active).\n\n| Training steps | test steps | attack base rate | ROC AUC | Brier score | ECE (10 bins) | TPR @ 0.5 | FPR @ 0.5 |\n|---|---|---|---|---|---|---|---|\n| 96000 | 36000 | 0.297 | 0.831 | 0.140 | 0.036 | 0.450 | 0.047 |\n",
+ "repro": {
+  "gains": {
+   "A": [
+    [
+     -6.8999999999999995,
+     -0.020900000000000002
+    ],
+    [
+     7.458048477315102,
+     0.0
+    ]
+   ],
+   "B": [
+    6.679666666666666,
+    0.0
+   ],
+   "K0": [
+    1.0398739976938027,
+    0.99808150655163
+   ],
+   "K1": [
+    -0.7142556231802601,
+    -0.9949948453154135
+   ],
+   "P0": [
+    [
+     0.15567752847354702,
+     0.1494208553148805
+    ],
+    [
+     0.1494208553148805,
+     0.2776401073953036
+    ]
+   ],
+   "P1": [
+    [
+     0.0712865535386257,
+     0.09930583814715441
+    ],
+    [
+     0.09930583814715441,
+     0.563039396826837
+    ]
+   ],
+   "K0_paper": [
+    1.04002929,
+    0.99794718
+   ],
+   "K1_paper": [
+    -0.7143903500000001,
+    -0.99493635
+   ],
+   "Ahat0_paper": [
+    [
+     -6.9,
+     -0.0209
+    ],
+    [
+     7.458,
+     0.0
+    ]
+   ],
+   "Bhat0_paper": [
+    6.6797,
+    0.0
+   ]
+  },
+  "switched": {
+   "max_norm": 1.4142135623730951,
+   "final_norm": 0.0023880692069142367,
+   "n_switch": 29,
+   "fault_frac": 0.6760625,
+   "mismatch_frac": 0.0309125
+  },
+  "nonswitched": {
+   "max_norm": 985644836620.5621,
+   "diverged": true,
+   "t_exceed_1e3": 10.05
+  },
+  "eta_sweep": {
+   "50": {
+    "max_norm": 13.612987835294197,
+    "mean_norm": 0.29154876831169124,
+    "n_switch": 29
+   },
+   "5": {
+    "max_norm": 4.305783553571407,
+    "mean_norm": 0.09503634221409661,
+    "n_switch": 29
+   },
+   "0.5": {
+    "max_norm": 1.4142135623730951,
+    "mean_norm": 0.033776198602800137,
+    "n_switch": 29
+   },
+   "0.05": {
+    "max_norm": 1.4142135623730951,
+    "mean_norm": 0.014193274213532003,
+    "n_switch": 29
+   }
+  }
+ },
+ "TABLE_REPRO": ": TABLE III-A. Reproduction of the DC-motor design of [1].\n\n| Quantity | reported in [1] (learned) | this reproduction (model-based) |\n|---|---|---|\n| mode-0 gain $K_0$ ($u=-K_0x$) | [1.0400, 0.9979] | [1.0399, 0.9981] |\n| mode-1 gain $K_1$ ($u=-K_1\\tilde x$) | [-0.7144, -0.9949] | [-0.7143, -0.9950] |\n| $P_0$ (entries 11, 12, 22) | 0.1557, 0.1494, 0.2776 | 0.1557, 0.1494, 0.2776 |\n| non-switched controller under fault | diverges (Fig. 9 of [1]) | diverges (\u2016x\u2016 > 10\u00b3 at t = 10.1 s) |\n| switched controller, max \u2016x\u2016 over 800 s | bounded (Fig. 7 of [1]) | 1.414 (29 switches) |\n| effect of \u03b7\u221e (50 \u2192 0.05) on max \u2016x\u2016 | chattering reduced (Fig. 8 of [1]) | 13.61 \u2192 1.41 |\n",
+ "cert": {
+  "bench": "dcmotor",
+  "KN": [
+   -2.732813387193402,
+   -5.310934813515517
+  ],
+  "KR": [
+   -0.479968464821066,
+   -0.49995834098436764
+  ],
+  "KM": [
+   -2.1011355746403027,
+   -3.489656456692269
+  ],
+  "P": [
+   [
+    2.0615350543658053,
+    0.5614069557039382
+   ],
+   [
+    0.5614069557039382,
+    0.6379604203807024
+   ]
+  ],
+  "ell": 2.785894265232167,
+  "rho": 0.9044218534140843,
+  "rhoN": 2.7680749577885653,
+  "lam": 0.98,
+  "alpha": 0.9474865297305536,
+  "beta": 1.0014813410177326,
+  "c0": 0.018815840099331276,
+  "kappa": 0.6267610945812229,
+  "sigma": [
+   0.798724245519505,
+   1.4358046713831953
+  ],
+  "p": [
+   1.4358046713831953,
+   0.7987242455195049
+  ],
+  "rbar": [
+   0.29615170773965327,
+   1.9947366289854835
+  ],
+  "qbar": 2.018460514407256,
+  "eps0": 0.02,
+  "margin": 0.35219041725524836,
+  "ultimate_bound_P": 103.94148623476997,
+  "cert_ok": true,
+  "conditions": {
+   "alpha<1": 1.0,
+   "contraction": 1.0,
+   "nonempty": 1.0,
+   "input": 1.0,
+   "state": true,
+   "lam>=rho": true
+  },
+  "dA": [
+   [
+    0.015265141054282193,
+    2.7880532292344568e-05
+   ],
+   [
+    0.023152449191737434,
+    1.6828934642545425e-05
+   ]
+  ],
+  "dB": [
+   0.008910653693880164,
+   0.005378548984096035
+  ],
+  "L": 10,
+  "rel_unc": 0.03,
+  "lhs": 2.76739952422645
+ },
+ "TABLE_CERT": ": TABLE III. Certificate quantities for the DC motor (Remark 3).\n\n| Quantity | value | Quantity | value |\n|---|---|---|---|\n| $K_R$ | [-0.4800, -0.5000] | $\\rho$ | 0.9044 |\n| $P$ | [[2.0615, 0.5614], [0.5614, 0.6380]] | $\\alpha$ (C1) | 0.9475 |\n| $\\ell$ | 2.7859 | $\\beta$ | 1.0015 |\n| $\\sigma\\ell$ (bound on $|x|$ in \u03a9) | [2.225, 4.000] | $c_0$ | 0.0188 |\n| $\\kappa\\ell$ (bound on $|K_Rx|$) | 1.746 | $\\bar r$ | [0.2962, 1.9947] |\n| $L=N_b+d_{\\max}+N_a$ | 10 | $\\bar q=p^\\top\\bar r$ (C3: $<\\ell$) | 2.0185 |\n| $\\lambda$, $\\epsilon_0$ (C5: $\\lambda\\ge\\rho$) | 0.98, 0.02 | (C2) LHS vs. $\\ell$ | 2.7674 \u2264 2.7859 |\n",
+ "TABLE_MAIN": ": TABLE VI. RMSE of \u2016x\u2016 (mean over 20 paired seeds) and, in parentheses, the percentage of episodes with a constraint violation. Best mean in bold. \u2020 = assumptions violated by design (\u039b on both channels, uncapped bursts, delay > 3, uncertainty > 3 %). The attack families without \u2020 use attack intervals \u2265 0.5 s, for which A4 is not guaranteed, so their results are empirical (SAFE-Switch containment 77\u201390 %). Only E1, E2-stealth, E3-loss, E3-actuator, and E4-delay \u2264 3 lie fully inside the envelope. SAFE-Switch and PPO entries are averaged over policy seeds (5 and 2).\n\n| Scenario | SAFE-Switch | Risk-threshold + filter | Huang\u2013Dong [1] | LQR | Robust H\u221e | Robust MPC | PPO w/o filter |\n|---|---|---|---|---|---|---|---|\n| E1 nominal | 0.104 (0) | **0.104 (0)** | 0.127 (0) | 0.111 (0) | 0.137 (0) | 0.112 (0) | 0.111 (0) |\n| E2 mult (HD)\u2020 | 0.827 (7) | 0.868 (10) | **0.172 (0)** | 189 (100) | 1.097 (20) | 0.886 (5) | 0.714 (5) |\n| E2 bias 0.3 | 0.216 (0) | 0.214 (0) | 0.225 (0) | **0.170 (0)** | 0.237 (0) | 0.222 (0) | 0.220 (0) |\n| E2 bias 2.0 | 0.549 (0) | **0.547 (0)** | 1.379 (0) | 0.768 (0) | 0.550 (0) | 0.564 (0) | 0.557 (0) |\n| E2 ramp 0.2/s | 0.421 (0) | 0.420 (0) | 0.489 (0) | **0.342 (0)** | 0.434 (0) | 0.425 (0) | 0.433 (0) |\n| E2 stealth 0.03 | 0.105 (0) | **0.105 (0)** | 0.128 (0) | 0.112 (0) | 0.137 (0) | 0.113 (0) | 0.112 (0) |\n| E3 loss 0.5 | 0.107 (0) | **0.106 (0)** | 0.206 (5) | 0.113 (0) | 0.139 (0) | 0.114 (0) | 0.113 (0) |\n| E3 burst (uncapped)\u2020 | 0.108 (0) | **0.107 (0)** | 0.146 (0) | 0.115 (0) | 0.140 (0) | 0.116 (0) | 0.115 (0) |\n| E3 actuator loss 0.3 | 0.104 (0) | **0.104 (0)** | 0.125 (0) | 0.182 (5) | 0.134 (0) | 0.202 (5) | 0.113 (0) |\n| E4 delay 3 | 0.108 (0) | **0.107 (0)** | 0.341 (15) | 0.114 (0) | 0.142 (0) | 0.114 (0) | 0.114 (0) |\n| E4 delay 10\u2020 | 0.113 (0) | **0.112 (0)** | 70.6 (80) | 0.119 (0) | 0.148 (0) | 0.119 (0) | 0.119 (0) |\n| E5 bias+net | **0.303 (0)** | 0.330 (0) | 21.4 (100) | 0.494 (0) | 0.317 (0) | 0.326 (0) | 0.322 (0) |\n| E5 mult+net\u2020 | 0.902 (10) | 0.877 (10) | 1.070 (60) | 155 (100) | 0.976 (10) | 0.886 (10) | **0.798 (5)** |\n| E7 unc 0.3\u2020 | **0.316 (0)** | 0.317 (0) | 42.4 (95) | 0.507 (0) | 0.329 (0) | 0.347 (0) | 0.339 (0) |\n",
+ "TABLE_E5": ": TABLE VII. Detailed metrics for the combined scenario E5 (bias 1.0 on one channel, bursty loss 0.2, delay \u2264 3, actuator loss 0.1); means over 20 paired seeds.\n\n| Method | RMSE [95 % CI] | max \u2016x\u2016 | viol. % | recovery (s) | energy | switches | interv. % | infeas. % | contain. % | ms/step |\n|---|---|---|---|---|---|---|---|---|---|---|\n| SAFE-Switch | 0.303 [0.185, 0.421] | 1.431 | 0 | 1.24 | 1.976 | 1.0 | 9.1 | 0.09 | 90.5 | 0.88 |\n| Risk-threshold + filter | 0.330 [0.208, 0.452] | 1.432 | 0 | 1.29 | 2.014 | 11.6 | 16.0 | 0.19 | 89.0 | 0.81 |\n| Huang\u2013Dong [1] | 21.4 [6.967, 35.8] | 60.9 | 100 | 2.63 | 533 | 119.3 | 0.0 | 0.00 | n/a | 0.02 |\n| LQR | 0.494 [0.402, 0.586] | 2.212 | 0 | 1.38 | 19.4 | 0.0 | 0.0 | 0.00 | n/a | 0.09 |\n| Robust H\u221e | 0.317 [0.202, 0.431] | 1.421 | 0 | 1.41 | 0.411 | 0.0 | 0.0 | 0.00 | n/a | 0.53 |\n| Robust MPC | 0.326 [0.213, 0.440] | 2.137 | 0 | 1.30 | 7.209 | 0.0 | 0.0 | 0.00 | n/a | 4.80 |\n| PPO w/o filter | 0.322 [0.206, 0.438] | 1.814 | 0 | 1.02 | 6.019 | 2.9 | 0.0 | 0.00 | 90.8 | 0.84 |\n",
+ "TABLE_WTL": ": TABLE VIII. Paired comparison over all 24 scenario families (Wilcoxon signed-rank on per-seed RMSE, Holm-corrected within each row, \u03b1 = 0.05).\n\n| Comparison (SAFE-Switch vs.) | better | no significant difference | worse | median paired \u0394RMSE |\n|---|---|---|---|---|\n| Risk-threshold + filter | 0 | 9 | 15 | +0.0007 |\n| Huang\u2013Dong [1] | 19 | 4 | 1 | -0.0547 |\n| LQR | 21 | 3 | 0 | -0.0084 |\n| Robust H\u221e | 21 | 3 | 0 | -0.0303 |\n| Robust MPC | 22 | 2 | 0 | -0.0073 |\n| PPO w/o filter | 21 | 2 | 1 | -0.0068 |\n",
+ "wtl": {
+  "Risk-threshold + filter": [
+   0,
+   9,
+   15
+  ],
+  "Huang\u2013Dong [1]": [
+   19,
+   4,
+   1
+  ],
+  "LQR": [
+   21,
+   3,
+   0
+  ],
+  "Robust H\u221e": [
+   21,
+   3,
+   0
+  ],
+  "Robust MPC": [
+   22,
+   2,
+   0
+  ],
+  "PPO w/o filter": [
+   21,
+   2,
+   1
+  ]
+ },
+ "headline": {
+  "SAFE-Switch": {
+   "viol_eps": 3,
+   "n_eps": 480,
+   "div_eps": 0,
+   "viol_eps_inenv": 0,
+   "n_inenv": 160
+  },
+  "Risk-threshold + filter": {
+   "viol_eps": 4,
+   "n_eps": 480,
+   "div_eps": 0,
+   "viol_eps_inenv": 0,
+   "n_inenv": 160
+  },
+  "Huang\u2013Dong [1]": {
+   "viol_eps": 152,
+   "n_eps": 480,
+   "div_eps": 0,
+   "viol_eps_inenv": 4,
+   "n_inenv": 160
+  },
+  "LQR": {
+   "viol_eps": 41,
+   "n_eps": 480,
+   "div_eps": 0,
+   "viol_eps_inenv": 1,
+   "n_inenv": 160
+  },
+  "Robust H\u221e": {
+   "viol_eps": 6,
+   "n_eps": 480,
+   "div_eps": 0,
+   "viol_eps_inenv": 0,
+   "n_inenv": 160
+  },
+  "Robust MPC": {
+   "viol_eps": 4,
+   "n_eps": 480,
+   "div_eps": 0,
+   "viol_eps_inenv": 1,
+   "n_inenv": 160
+  },
+  "PPO w/o filter": {
+   "viol_eps": 2,
+   "n_eps": 480,
+   "div_eps": 0,
+   "viol_eps_inenv": 0,
+   "n_inenv": 160
+  }
+ },
+ "inenv": [
+  "E1 nominal",
+  "E2 stealth 0.03",
+  "E3 loss 0.1",
+  "E3 loss 0.3",
+  "E3 loss 0.5",
+  "E3 actuator loss 0.3",
+  "E4 delay 1",
+  "E4 delay 3"
+ ],
+ "e5": {
+  "SAFE-Switch": 0.30303232642162675,
+  "Risk-threshold + filter": 0.32988901945443627,
+  "Huang\u2013Dong [1]": 21.399732533319845,
+  "LQR": 0.4939857370932793,
+  "Robust H\u221e": 0.31662632646438305,
+  "Robust MPC": 0.3263878333021698,
+  "PPO w/o filter": 0.32178137332894435
+ },
+ "n_scen": 24,
+ "e5_seed_spread": [
+  0.30301887827667406,
+  0.3030403443505577,
+  0.30304257191181216,
+  0.3030556121181169,
+  0.30300422545097283
+ ],
+ "contain": {
+  "E1 nominal": 1.0,
+  "E2 bias 0.1": 0.7748833333333331,
+  "E2 bias 0.3": 0.8480166666666665,
+  "E2 bias 1.0": 0.8845833333333333,
+  "E2 bias 2.0": 0.8990833333333332,
+  "E2 mult (HD)": 0.7051999999999999,
+  "E2 ramp 0.2/s": 0.7949499999999999,
+  "E2 stealth 0.03": 1.0,
+  "E3 actuator loss 0.3": 1.0,
+  "E3 burst (uncapped)": 1.0,
+  "E3 loss 0.1": 1.0,
+  "E3 loss 0.3": 1.0,
+  "E3 loss 0.5": 1.0,
+  "E4 delay 1": 1.0,
+  "E4 delay 10": 1.0,
+  "E4 delay 3": 1.0,
+  "E4 delay 6": 1.0,
+  "E5 bias+net": 0.9047499999999999,
+  "E5 mult+net": 0.7127166666666668,
+  "E7 unc 0.0": 0.9047499999999999,
+  "E7 unc 0.03": 0.9047499999999999,
+  "E7 unc 0.1": 0.9032499999999999,
+  "E7 unc 0.2": 0.8949833333333335,
+  "E7 unc 0.3": 0.8867166666666668
+ },
+ "infeas": {
+  "E1 nominal": 0.0,
+  "E2 bias 0.1": 0.0,
+  "E2 bias 0.3": 0.0,
+  "E2 bias 1.0": 0.0,
+  "E2 bias 2.0": 0.008616666666666667,
+  "E2 mult (HD)": 0.022399999999999996,
+  "E2 ramp 0.2/s": 0.0046166666666666665,
+  "E2 stealth 0.03": 0.0,
+  "E3 actuator loss 0.3": 0.0,
+  "E3 burst (uncapped)": 0.0,
+  "E3 loss 0.1": 0.0,
+  "E3 loss 0.3": 0.0,
+  "E3 loss 0.5": 0.0,
+  "E4 delay 1": 0.0,
+  "E4 delay 10": 0.0,
+  "E4 delay 3": 0.0,
+  "E4 delay 6": 0.0,
+  "E5 bias+net": 0.0009166666666666666,
+  "E5 mult+net": 0.0132,
+  "E7 unc 0.0": 0.0009166666666666666,
+  "E7 unc 0.03": 0.0009166666666666666,
+  "E7 unc 0.1": 0.0009166666666666666,
+  "E7 unc 0.2": 0.002,
+  "E7 unc 0.3": 0.0009166666666666666
+ },
+ "tms": {
+  "SAFE-Switch": 0.8641338714072738,
+  "Risk-threshold + filter": 0.8041739001141525,
+  "Huang\u2013Dong [1]": 0.01799384578088039,
+  "LQR": 0.07845944807529766,
+  "Robust H\u221e": 0.5160481981985912,
+  "Robust MPC": 4.554512054158914,
+  "PPO w/o filter": 0.8246088730440798
+ },
+ "tmax": {
+  "SAFE-Switch": 100.04507499979809,
+  "Risk-threshold + filter": 62.456587998894975,
+  "Huang\u2013Dong [1]": 20.212522000292665,
+  "LQR": 32.277143000101205,
+  "Robust H\u221e": 33.25826200125448,
+  "Robust MPC": 174.6032399996693,
+  "PPO w/o filter": 77.46686800055613
+ },
+ "TABLE_ABL": ": TABLE IX. Ablation (E6): RMSE of \u2016x\u2016 (violation-episode %) with one component removed. PPO-based variants use policy seeds 0\u20132 (risk features: 0\u20131; safety filter: the two policies trained without filter).\n\n| Variant | E1 nominal | E2 bias 1.0 | E2 mult (HD) | E3 loss 0.5 | E5 bias+net | switches (E5) | contain. % (E5) |\n|---|---|---|---|---|---|---|---|\n| SAFE-Switch | 0.104 (0) | 0.332 (0) | 0.827 (7) | 0.107 (0) | 0.303 (0) | 1.0 | 90.5 |\n| w/o safety filter | 0.111 (0) | 0.336 (0) | 0.714 (5) | 0.113 (0) | 0.322 (0) | 2.9 | 90.8 |\n| w/o risk features | 0.104 (0) | 0.333 (0) | 0.774 (5) | 0.107 (0) | 0.305 (0) | 3.1 | 90.5 |\n| w/o timestamps | 0.104 (0) | 0.332 (0) | 0.805 (7) | 0.107 (0) | 0.420 (0) | 1.0 | 86.7 |\n| w/o dwell time | 0.104 (0) | 0.332 (0) | 0.866 (7) | 0.106 (0) | 0.303 (0) | 1.0 | 90.5 |\n| w/o packetized fallback | 0.104 (0) | 0.332 (0) | 0.805 (7) | 0.107 (0) | 0.307 (0) | 1.0 | 90.5 |\n| w/o zonotope (box only) | 0.104 (0) | 0.338 (0) | 0.805 (7) | 0.107 (0) | 0.306 (0) | 1.0 | 90.5 |\n| w/o quarantine/re-anchoring | 0.104 (0) | 0.351 (0) | 1.812 (37) | 0.107 (0) | 0.353 (0) | 1.0 | 82.7 |\n| Filter only (N) | 0.104 (0) | 0.358 (0) | 1.284 (15) | 0.107 (0) | 0.343 (0) | 0.0 | 88.9 |\n| Robust mode + filter (R) | 0.104 (0) | 0.332 (0) | 0.958 (5) | 0.106 (0) | 0.303 (0) | 0.0 | 90.4 |\n| Random supervisor + filter | 0.104 (0) | 0.347 (0) | 1.173 (15) | 0.106 (0) | 0.312 (0) | 22.9 | 90.3 |\n",
+ "abl": {
+  "SAFE-Switch": {
+   "E1 nominal": 0.1043941491874476,
+   "E2 bias 1.0": 0.3321668761651009,
+   "E2 mult (HD)": 0.8266684887393352,
+   "E3 loss 0.5": 0.10661782833849257,
+   "E5 bias+net": 0.30303232642162675
+  },
+  "w/o safety filter": {
+   "E1 nominal": 0.11129092289909218,
+   "E2 bias 1.0": 0.3357547005225968,
+   "E2 mult (HD)": 0.7140395600337847,
+   "E3 loss 0.5": 0.11331308116663703,
+   "E5 bias+net": 0.32178137332894435
+  },
+  "w/o risk features": {
+   "E1 nominal": 0.1043941491874476,
+   "E2 bias 1.0": 0.3325722742014451,
+   "E2 mult (HD)": 0.7736270453086336,
+   "E3 loss 0.5": 0.10661782833849257,
+   "E5 bias+net": 0.30468960027492187
+  },
+  "w/o timestamps": {
+   "E1 nominal": 0.1043941491874476,
+   "E2 bias 1.0": 0.33216880385787817,
+   "E2 mult (HD)": 0.8047834882141609,
+   "E3 loss 0.5": 0.10661782833849258,
+   "E5 bias+net": 0.4201316868529793
+  },
+  "w/o dwell time": {
+   "E1 nominal": 0.10415512802478125,
+   "E2 bias 1.0": 0.3320891956791874,
+   "E2 mult (HD)": 0.8663083498521587,
+   "E3 loss 0.5": 0.10628800892173404,
+   "E5 bias+net": 0.3030077857838735
+  },
+  "w/o packetized fallback": {
+   "E1 nominal": 0.1043941491874476,
+   "E2 bias 1.0": 0.33216880385787817,
+   "E2 mult (HD)": 0.8047834882141609,
+   "E3 loss 0.5": 0.10661782833849258,
+   "E5 bias+net": 0.3067851192050839
+  },
+  "w/o zonotope (box only)": {
+   "E1 nominal": 0.1043941491874476,
+   "E2 bias 1.0": 0.33826551010994,
+   "E2 mult (HD)": 0.8047352173109827,
+   "E3 loss 0.5": 0.10661782833849258,
+   "E5 bias+net": 0.3057230052125405
+  },
+  "w/o quarantine/re-anchoring": {
+   "E1 nominal": 0.1043941491874476,
+   "E2 bias 1.0": 0.35118765608749036,
+   "E2 mult (HD)": 1.8117845660347036,
+   "E3 loss 0.5": 0.10661782833849258,
+   "E5 bias+net": 0.3525037188042668
+  },
+  "Filter only (N)": {
+   "E1 nominal": 0.1043941491874476,
+   "E2 bias 1.0": 0.3578069769237705,
+   "E2 mult (HD)": 1.2837360919314738,
+   "E3 loss 0.5": 0.10661782833849257,
+   "E5 bias+net": 0.34278905474551313
+  },
+  "Robust mode + filter (R)": {
+   "E1 nominal": 0.10367708569944853,
+   "E2 bias 1.0": 0.33193753915428126,
+   "E2 mult (HD)": 0.9580263395328219,
+   "E3 loss 0.5": 0.10558475086338462,
+   "E5 bias+net": 0.3029404410892506
+  },
+  "Random supervisor + filter": {
+   "E1 nominal": 0.10433683593264223,
+   "E2 bias 1.0": 0.347464248175392,
+   "E2 mult (HD)": 1.1728362069632048,
+   "E3 loss 0.5": 0.1063752218525333,
+   "E5 bias+net": 0.3118057513673201
+  }
+ },
+ "abl_contain": {
+  "SAFE-Switch": 0.9047499999999999,
+  "w/o safety filter": 0.9077916666666667,
+  "w/o risk features": 0.904625,
+  "w/o timestamps": 0.8667222222222222,
+  "w/o dwell time": 0.9046388888888888,
+  "w/o packetized fallback": 0.9049166666666666,
+  "w/o zonotope (box only)": 0.9047499999999999,
+  "w/o quarantine/re-anchoring": 0.8270833333333332,
+  "Filter only (N)": 0.8891666666666665,
+  "Robust mode + filter (R)": 0.9044166666666665,
+  "Random supervisor + filter": 0.9032500000000001
+ },
+ "TABLE_STRESS": ": TABLE X. Worst-case-supervisor stress test (E10): bias of magnitude 6 in short bursts (mean 0.1 s, every \u22481 s) and, \u2020, in long intervals (outside A4). Entries: RMSE of \u2016x\u2016 (violation-episode %), 20 paired seeds.\n\n| Method | E10 burst-bias 6 current | E10 burst-bias 6 speed | E10 burst-bias 6 speed+net | E10 long bias 6 speed\u2020 |\n|---|---|---|---|---|\n| SAFE-Switch | 0.107 (0) | 0.196 (0) | 0.190 (0) | 2.921 (90) |\n| PPO w/o filter | 0.239 (0) | 0.350 (0) | 0.652 (2) | 2.908 (88) |\n| Filter only (N) | 0.120 (0) | 0.175 (0) | 0.191 (0) | 2.908 (90) |\n| Always N w/o filter | 0.438 (0) | 2.005 (100) | 1.931 (100) | 3.694 (100) |\n| Random supervisor + filter | 0.113 (0) | 0.172 (0) | 0.185 (0) | 2.920 (90) |\n| Random supervisor w/o filter | 0.295 (0) | 1.274 (90) | 1.219 (90) | 3.406 (100) |\n| Risk-threshold + filter | 0.111 (0) | 0.182 (0) | 0.194 (0) | 2.907 (90) |\n| Huang\u2013Dong [1] | 0.929 (70) | 0.829 (45) | 39.8 (100) | 3.584 (100) |\n| LQR | 0.438 (0) | 2.005 (100) | 2.098 (100) | 3.694 (100) |\n| Robust H\u221e | 0.137 (0) | 0.224 (0) | 0.234 (0) | 2.904 (90) |\n| Robust MPC | 0.114 (0) | 0.202 (0) | 0.195 (0) | 2.947 (90) |\n",
+ "stress": {
+  "SAFE-Switch": {
+   "E10 burst-bias 6 current": [
+    0.10719836815557626,
+    0.0,
+    8.333333333333333e-05
+   ],
+   "E10 burst-bias 6 speed": [
+    0.19604645472558124,
+    0.0,
+    0.013933333333333334
+   ],
+   "E10 burst-bias 6 speed+net": [
+    0.18995266811941308,
+    0.0,
+    0.013250000000000001
+   ],
+   "E10 long bias 6 speed\u2020": [
+    2.9207400356355633,
+    0.9,
+    0.37583333333333335
+   ]
+  },
+  "PPO w/o filter": {
+   "E10 burst-bias 6 current": [
+    0.2385727545718896,
+    0.0,
+    0.0
+   ],
+   "E10 burst-bias 6 speed": [
+    0.34980326181953675,
+    0.0,
+    0.0
+   ],
+   "E10 burst-bias 6 speed+net": [
+    0.6516924614111325,
+    0.025,
+    0.0
+   ],
+   "E10 long bias 6 speed\u2020": [
+    2.907529945911599,
+    0.875,
+    0.0
+   ]
+  },
+  "Filter only (N)": {
+   "E10 burst-bias 6 current": [
+    0.12003783289141641,
+    0.0,
+    8.333333333333334e-05
+   ],
+   "E10 burst-bias 6 speed": [
+    0.17545994664011705,
+    0.0,
+    0.010083333333333333
+   ],
+   "E10 burst-bias 6 speed+net": [
+    0.1906925572791398,
+    0.0,
+    0.015333333333333332
+   ],
+   "E10 long bias 6 speed\u2020": [
+    2.9079552953960484,
+    0.9,
+    0.37583333333333335
+   ]
+  },
+  "Always N w/o filter": {
+   "E10 burst-bias 6 current": [
+    0.43845411831151226,
+    0.0,
+    0.0
+   ],
+   "E10 burst-bias 6 speed": [
+    2.005001030681864,
+    1.0,
+    0.0
+   ],
+   "E10 burst-bias 6 speed+net": [
+    1.9305451648934988,
+    1.0,
+    0.0
+   ],
+   "E10 long bias 6 speed\u2020": [
+    3.69428719170567,
+    1.0,
+    0.0
+   ]
+  },
+  "Random supervisor + filter": {
+   "E10 burst-bias 6 current": [
+    0.11255012122136236,
+    0.0,
+    8.333333333333334e-05
+   ],
+   "E10 burst-bias 6 speed": [
+    0.17154937578000165,
+    0.0,
+    0.01025
+   ],
+   "E10 burst-bias 6 speed+net": [
+    0.18537337698150463,
+    0.0,
+    0.014583333333333332
+   ],
+   "E10 long bias 6 speed\u2020": [
+    2.920480986562082,
+    0.9,
+    0.37583333333333335
+   ]
+  },
+  "Random supervisor w/o filter": {
+   "E10 burst-bias 6 current": [
+    0.29505527277962423,
+    0.0,
+    0.0
+   ],
+   "E10 burst-bias 6 speed": [
+    1.2742450076141982,
+    0.9,
+    0.0
+   ],
+   "E10 burst-bias 6 speed+net": [
+    1.2187583023094,
+    0.9,
+    0.0
+   ],
+   "E10 long bias 6 speed\u2020": [
+    3.4055177293061263,
+    1.0,
+    0.0
+   ]
+  },
+  "Risk-threshold + filter": {
+   "E10 burst-bias 6 current": [
+    0.11123077967515797,
+    0.0,
+    8.333333333333334e-05
+   ],
+   "E10 burst-bias 6 speed": [
+    0.18198219955570707,
+    0.0,
+    0.010166666666666668
+   ],
+   "E10 burst-bias 6 speed+net": [
+    0.19434698813200207,
+    0.0,
+    0.014000000000000002
+   ],
+   "E10 long bias 6 speed\u2020": [
+    2.9068970531424845,
+    0.9,
+    0.37583333333333335
+   ]
+  },
+  "Huang\u2013Dong [1]": {
+   "E10 burst-bias 6 current": [
+    0.9294352200898857,
+    0.7,
+    0.0
+   ],
+   "E10 burst-bias 6 speed": [
+    0.8294052912683855,
+    0.45,
+    0.0
+   ],
+   "E10 burst-bias 6 speed+net": [
+    39.83374637178768,
+    1.0,
+    0.0
+   ],
+   "E10 long bias 6 speed\u2020": [
+    3.5842175467975936,
+    1.0,
+    0.0
+   ]
+  },
+  "LQR": {
+   "E10 burst-bias 6 current": [
+    0.43845411831151226,
+    0.0,
+    0.0
+   ],
+   "E10 burst-bias 6 speed": [
+    2.005001030681864,
+    1.0,
+    0.0
+   ],
+   "E10 burst-bias 6 speed+net": [
+    2.0980041831273373,
+    1.0,
+    0.0
+   ],
+   "E10 long bias 6 speed\u2020": [
+    3.69428719170567,
+    1.0,
+    0.0
+   ]
+  },
+  "Robust H\u221e": {
+   "E10 burst-bias 6 current": [
+    0.13677703327275503,
+    0.0,
+    0.0
+   ],
+   "E10 burst-bias 6 speed": [
+    0.22378483130762988,
+    0.0,
+    0.0
+   ],
+   "E10 burst-bias 6 speed+net": [
+    0.2337107963565838,
+    0.0,
+    0.0
+   ],
+   "E10 long bias 6 speed\u2020": [
+    2.903768397168249,
+    0.9,
+    0.0
+   ]
+  },
+  "Robust MPC": {
+   "E10 burst-bias 6 current": [
+    0.11434447887966795,
+    0.0,
+    0.0
+   ],
+   "E10 burst-bias 6 speed": [
+    0.20196122373438827,
+    0.0,
+    0.0020833333333333333
+   ],
+   "E10 burst-bias 6 speed+net": [
+    0.19450413393357407,
+    0.0,
+    0.003166666666666667
+   ],
+   "E10 long bias 6 speed\u2020": [
+    2.9471964671254773,
+    0.9,
+    0.07658333333333334
+   ]
+  }
+ },
+ "TABLE_SCAL": ": TABLE XII. Scalability (E8) on chains of coupled DC motors; per-step time on one CPU core (Python/NumPy; filter: exact 1-D projection for m = 1, Clarabel SOCP for m > 1).\n\n| N motors | n | m | set estimator (ms) | Kalman (ms) | safety filter (ms) | PPO (ms) | total mean (ms) | synthesis (s) | certificate (C1)\u2013(C5) |\n|---|---|---|---|---|---|---|---|---|---|\n| 1 | 2 | 1 | 0.58 (p99 1.25) | 0.08 | 0.05 (p99 0.13) | 0.056 | 0.77 | 0.94 | holds |\n| 2 | 4 | 2 | 1.22 (p99 1.74) | 0.19 | 2.55 (p99 3.59) | 0.106 | 4.06 | 0.95 | fails (\u03b1 = 0.991) |\n| 4 | 8 | 4 | 1.86 (p99 3.10) | 0.30 | 2.48 (p99 4.25) | 0.110 | 4.76 | 0.84 | fails (\u03b1 = 1.077) |\n| 8 | 16 | 8 | 4.36 (p99 6.82) | 0.68 | 3.20 (p99 6.76) | 0.135 | 8.38 | 0.76 | fails (\u03b1 = 1.249) |\n| 16 | 32 | 16 | 7.83 (p99 11.72) | 1.26 | 3.42 (p99 5.25) | 0.123 | 12.64 | 0.82 | fails (\u03b1 = 1.593) |\n",
+ "scal": [
+  {
+   "N": 1,
+   "n": 2,
+   "m": 1,
+   "est_ms": [
+    0.5846583031102041,
+    1.2477659811338524
+   ],
+   "kf_ms": [
+    0.08116517183409105,
+    0.14537556093273432
+   ],
+   "filter_ms": [
+    0.050602585792828426,
+    0.13001046085264514
+   ],
+   "ppo_ms": [
+    0.0562675857398779,
+    0.13320115995156767
+   ],
+   "total_ms": 0.7726936464770013,
+   "synthesis_s": 0.9449205019991496,
+   "cert_ok": true,
+   "alpha": 0.9474865297305536,
+   "qbar_over_ell": 0.7241332976294358
+  },
+  {
+   "N": 2,
+   "n": 4,
+   "m": 2,
+   "est_ms": [
+    1.2173834444606333,
+    1.7413737999231667
+   ],
+   "kf_ms": [
+    0.18605693940392512,
+    0.3320404187252277
+   ],
+   "filter_ms": [
+    2.5507504647388064,
+    3.5854758401546403
+   ],
+   "ppo_ms": [
+    0.10553620189176684,
+    0.17424284065782553
+   ],
+   "total_ms": 4.059727050495131,
+   "synthesis_s": 0.9470988050015876,
+   "cert_ok": false,
+   "alpha": 0.990551206047023,
+   "qbar_over_ell": 1.4639448522005654
+  },
+  {
+   "N": 4,
+   "n": 8,
+   "m": 4,
+   "est_ms": [
+    1.8586702525947594,
+    3.100446039134112
+   ],
+   "kf_ms": [
+    0.30484866661624044,
+    0.5351359396445331
+   ],
+   "filter_ms": [
+    2.4836433738785515,
+    4.251574959744146
+   ],
+   "ppo_ms": [
+    0.11011532320719768,
+    0.2362335589714344
+   ],
+   "total_ms": 4.757277616296749,
+   "synthesis_s": 0.8398559670004033,
+   "cert_ok": false,
+   "alpha": 1.0766805586799615,
+   "qbar_over_ell": 2.943843713231274
+  },
+  {
+   "N": 8,
+   "n": 16,
+   "m": 8,
+   "est_ms": [
+    4.359533989822875,
+    6.8153075184090985
+   ],
+   "kf_ms": [
+    0.6778548080491776,
+    1.1900461795084991
+   ],
+   "filter_ms": [
+    3.2028911516292027,
+    6.756898421262996
+   ],
+   "ppo_ms": [
+    0.13485206047812656,
+    0.23182992015790638
+   ],
+   "total_ms": 8.375132009979382,
+   "synthesis_s": 0.763307421000718,
+   "cert_ok": false,
+   "alpha": 1.2489392639458383,
+   "qbar_over_ell": 5.903652329675377
+  },
+  {
+   "N": 16,
+   "n": 32,
+   "m": 16,
+   "est_ms": [
+    7.833314121219728,
+    11.716293140307243
+   ],
+   "kf_ms": [
+    1.262965969774564,
+    2.411444078861676
+   ],
+   "filter_ms": [
+    3.419812565632376,
+    5.254797939232903
+   ],
+   "ppo_ms": [
+    0.12277287887535739,
+    0.22823250055807875
+   ],
+   "total_ms": 12.638865535502026,
+   "synthesis_s": 0.8198623099997349,
+   "cert_ok": false,
+   "alpha": 1.5934566744775926,
+   "qbar_over_ell": 11.8232695698445
+  }
+ ]
+}
