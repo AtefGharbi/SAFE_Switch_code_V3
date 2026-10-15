@@ -1,0 +1,2792 @@
+{
+ "inenv_zero": {
+  "n_episodes": 160,
+  "n_runs": 800,
+  "cp95_episode": 0.018549134077503755,
+  "cp95_run": 0.0037376628261006077
+ },
+ "TABLE_PAIRED": ": TABLE IX. Paired differences (SAFE-Switch \u2212 baseline) of RMSE and control energy with 95 % t-intervals over 20 paired test seeds (DC motor, main suite). Negative = SAFE-Switch lower.\n\n| Scenario | baseline | \u0394RMSE [95 % CI] | \u0394energy [95 % CI] |\n|---|---|---|---|\n| E5 bias+net | Risk-threshold + filter | -0.028 [-0.082, +0.027] | -0.03 [-0.08, +0.03] |\n| E5 bias+net | Robust H\u221e | -0.014 [-0.020, -0.007] | +1.57 [+1.41, +1.73] |\n| E5 bias+net | Robust MPC | -0.023 [-0.035, -0.012] | -5.23 [-6.69, -3.77] |\n| E5 bias+net | LQR | -0.191 [-0.258, -0.123] | -17.43 [-22.72, -12.14] |\n| E5 bias+net | Huang\u2013Dong [1] | -21.097 [-35.558, -6.635] | -531.46 [-831.75, -231.17] |\n| E2 bias 1.0 | Risk-threshold + filter | +0.000 [-0.000, +0.001] | +0.02 [-0.01, +0.05] |\n| E2 bias 1.0 | Robust H\u221e | -0.015 [-0.020, -0.009] | +1.60 [+1.47, +1.73] |\n| E2 bias 1.0 | Robust MPC | -0.009 [-0.011, -0.006] | -3.37 [-3.93, -2.80] |\n| E2 bias 1.0 | LQR | -0.072 [-0.131, -0.014] | -2.83 [-3.58, -2.08] |\n| E2 bias 1.0 | Huang\u2013Dong [1] | -0.333 [-0.464, -0.201] | -0.12 [-0.42, +0.18] |\n| E3 loss 0.5 | Risk-threshold + filter | +0.001 [+0.001, +0.001] | +0.04 [+0.04, +0.04] |\n| E3 loss 0.5 | Robust H\u221e | -0.032 [-0.034, -0.030] | +1.16 [+1.15, +1.17] |\n| E3 loss 0.5 | Robust MPC | -0.007 [-0.007, -0.007] | -2.16 [-2.19, -2.13] |\n| E3 loss 0.5 | LQR | -0.007 [-0.007, -0.006] | -2.05 [-2.07, -2.02] |\n| E3 loss 0.5 | Huang\u2013Dong [1] | -0.099 [-0.160, -0.038] | -0.18 [-1.23, +0.86] |\n| E1 nominal | Risk-threshold + filter | +0.001 [+0.001, +0.001] | +0.04 [+0.04, +0.04] |\n| E1 nominal | Robust H\u221e | -0.032 [-0.034, -0.031] | +1.13 [+1.12, +1.13] |\n| E1 nominal | Robust MPC | -0.007 [-0.008, -0.007] | -2.18 [-2.20, -2.15] |\n| E1 nominal | LQR | -0.007 [-0.007, -0.007] | -2.03 [-2.05, -2.00] |\n| E1 nominal | Huang\u2013Dong [1] | -0.023 [-0.024, -0.022] | +1.05 [+1.05, +1.06] |\n",
+ "TABLE_LEVELS": ": TABLE X. Two experimental levels for the main SAFE-Switch results (5 policy seeds \u00d7 20 test seeds): two-level bootstrap interval of the mean RMSE and standard deviations of policy-seed means and test-seed means.\n\n| Scenario | mean RMSE | 95 % two-level CI | SD over policy seeds | SD over test seeds |\n|---|---|---|---|---|\n| E1 nominal | 0.104 | [0.104, 0.105] | 0.0000 | 0.001 |\n| E2 mult (HD) | 0.822 | [0.653, 1.014] | 0.0431 | 0.403 |\n| E5 bias+net | 0.303 | [0.204, 0.419] | 0.0001 | 0.253 |\n",
+ "TABLE_ADV": ": TABLE XI. Certificate validation by adversarial search (E11, cross-entropy method over initial state, time-varying \u0394A/\u0394B, disturbance, noise, accepted corruption |a| \u2264 \u0101, delays, worst-case loss bursts and switching signal; 300-step episodes). Smallest normalised margins found (negative = counterexample).\n\n| Plant | start f(c\u2080,r\u2080) | episodes | \u03a9 margin | fallback-feasibility margin | information-set margin | containment margin | radius margin | counterexample |\n|---|---|---|---|---|---|---|---|---|\n| DC motor | 0.99\u2113 | 1920 | 0.0150 | 0.0755 | 0.0000 | 5.02e-10 | 0.4906 | none |\n| coupled tanks | 0.99\u2113 | 1440 | 0.0139 | 0.0279 | 0.0000 | 1.02e-09 | 0.3441 | none |\n| DC motor | 0.00\u2113 | 1200 | 0.8978 | 0.8783 | 0.8625 | 5.02e-10 | 0.8311 | none |\n| coupled tanks | 0.00\u2113 | 960 | 0.8155 | 0.7854 | 0.7913 | 1.02e-09 | 0.4774 | none |\n| DC motor | 0.99\u2113 + detectable attacks (monitored form) (alarm steps 304776, onsets 2994, time budget always respected) | 1200 | 0.0150 | 0.0755 | 0.0000 | 5.02e-10 | 0.4118 | none |\n| coupled tanks | 0.99\u2113 + detectable attacks (monitored form) (alarm steps 265845, onsets 1898, time budget always respected) | 960 | 0.0139 | 0.0279 | 0.0000 | 1.02e-09 | 0.2060 | none |\n",
+ "adv": {
+  "dcmotor_0.99": {
+   "omega": 0.015015556202404245,
+   "feas": 0.07551159521188278,
+   "info": -3.18812681006796e-16,
+   "cont": 5.015964237803779e-10,
+   "rad": 0.49055006766942055,
+   "n": 1920,
+   "cex": false,
+   "alarms": 0,
+   "onsets": null,
+   "sound": null
+  },
+  "tank_0.99": {
+   "omega": 0.01388582944739114,
+   "feas": 0.027938695602791625,
+   "info": -1.5255493695321192e-16,
+   "cont": 1.0190040620513053e-09,
+   "rad": 0.34412598083588813,
+   "n": 1440,
+   "cex": false,
+   "alarms": 0,
+   "onsets": 0,
+   "sound": true
+  },
+  "dcmotor_0.00": {
+   "omega": 0.8978020983489712,
+   "feas": 0.8782605942954991,
+   "info": 0.8625326115735357,
+   "cont": 5.015965908456217e-10,
+   "rad": 0.8310798930828818,
+   "n": 1200,
+   "cex": false,
+   "alarms": 0,
+   "onsets": 0,
+   "sound": true
+  },
+  "tank_0.00": {
+   "omega": 0.8154500067225332,
+   "feas": 0.78538597798362,
+   "info": 0.7913144320781833,
+   "cont": 1.019004627713196e-09,
+   "rad": 0.4773959249195306,
+   "n": 960,
+   "cex": false,
+   "alarms": 0,
+   "onsets": 0,
+   "sound": true
+  },
+  "dcmotor_0.99_large2": {
+   "omega": 0.01501555627737694,
+   "feas": 0.07551159521188278,
+   "info": -3.18812681006796e-16,
+   "cont": 5.015966256508809e-10,
+   "rad": 0.41180131505566847,
+   "n": 1200,
+   "cex": false,
+   "alarms": 304776,
+   "onsets": 2994,
+   "sound": true
+  },
+  "tank_0.99_large2": {
+   "omega": 0.013885830237080343,
+   "feas": 0.027937026066278254,
+   "info": -3.0510987390642384e-16,
+   "cont": 1.019005306507465e-09,
+   "rad": 0.20601385795085492,
+   "n": 960,
+   "cex": false,
+   "alarms": 265845,
+   "onsets": 1898,
+   "sound": true
+  }
+ },
+ "cert_v2": {
+  "dcmotor": {
+   "bench": "dcmotor",
+   "conditions": {
+    "C1_alpha_lt_1": {
+     "lhs": 0.9474865297305536,
+     "rhs": 1.0,
+     "margin": 0.052513470269446416,
+     "pass": true
+    },
+    "C2_level_invariance": {
+     "lhs": 2.7672313302629497,
+     "rhs": 2.785894265232167,
+     "margin": 0.01866293496921756,
+     "pass": true
+    },
+    "C3_qbar_lt_ell": {
+     "lhs": 2.0173588011295034,
+     "rhs": 2.785894265232167,
+     "margin": 0.7685354641026638,
+     "pass": true
+    },
+    "C4a_input": {
+     "lhs": 1.7460901390644648,
+     "rhs": 5.0,
+     "margin": 3.2539098609355355,
+     "pass": true
+    },
+    "C4b_state": {
+     "lhs": 1.0,
+     "rhs": 1.0,
+     "margin": 0.0,
+     "pass": true
+    },
+    "C5_lambda_ge_rho": {
+     "lhs": 0.9044218534140843,
+     "rhs": 0.98,
+     "margin": 0.07557814658591566,
+     "pass": true
+    }
+   },
+   "all_pass": true,
+   "sampled_onestep_worst_slack": -0.07119799649966829,
+   "sampled_contraction_worst": -0.05708025224114932,
+   "n_samples": 200000,
+   "interval_enclosure_vertex_check": true,
+   "rbar": [
+    0.2959979182616361,
+    1.9936337431876034
+   ],
+   "ell": 2.785894265232167,
+   "rho": 0.9044218534140843,
+   "alpha": 0.9474865297305536,
+   "beta": 1.0014813410177326,
+   "c0": 0.018707132936355782,
+   "qbar": 2.0173588011295034,
+   "kappa": 0.6267610945812229,
+   "sigma": [
+    0.798724245519505,
+    1.4358046713831953
+   ],
+   "p": [
+    1.4358046713831953,
+    0.7987242455195049
+   ],
+   "P": [
+    [
+     2.0615350543658053,
+     0.5614069557039382
+    ],
+    [
+     0.5614069557039382,
+     0.6379604203807024
+    ]
+   ],
+   "KR": [
+    [
+     -0.479968464821066,
+     -0.49995834098436764
+    ]
+   ],
+   "dA": [
+    [
+     0.015265141054282193,
+     2.7880532292344568e-05
+    ],
+    [
+     0.023152449191737434,
+     1.6828934642545425e-05
+    ]
+   ],
+   "dB": [
+    [
+     0.008910653693880164
+    ],
+    [
+     0.005378548984096035
+    ]
+   ],
+   "L": 10,
+   "Nb": 4,
+   "dmax": 3,
+   "Na": 3,
+   "vbar": 0.02,
+   "abar": 0.03,
+   "wbar": 1.0,
+   "rel_unc": 0.03,
+   "ufilt": 5.0,
+   "umax": 10.0,
+   "apriori_ultimate_bound": {
+    "lambda=rho": 6.3080225579098705,
+    "lambda=0.98": 14.898631316543334
+   },
+   "apriori_note": "Theorem 2 a-priori bound on ||x||_P; compare with ell (vacuous if larger)."
+  },
+  "tank": {
+   "bench": "tank",
+   "conditions": {
+    "C1_alpha_lt_1": {
+     "lhs": 0.9733653756713793,
+     "rhs": 1.0,
+     "margin": 0.026634624328620737,
+     "pass": true
+    },
+    "C2_level_invariance": {
+     "lhs": 5.778306261575711,
+     "rhs": 5.822023445708129,
+     "margin": 0.04371718413241776,
+     "pass": true
+    },
+    "C3_qbar_lt_ell": {
+     "lhs": 1.5579757329290842,
+     "rhs": 5.822023445708129,
+     "margin": 4.264047712779044,
+     "pass": true
+    },
+    "C4a_input": {
+     "lhs": 1.4607781622011717,
+     "rhs": 5.0,
+     "margin": 3.539221837798828,
+     "pass": true
+    },
+    "C4b_state": {
+     "lhs": 1.0,
+     "rhs": 1.0,
+     "margin": 0.0,
+     "pass": true
+    },
+    "C5_lambda_ge_rho": {
+     "lhs": 0.96553975749271,
+     "rhs": 0.98,
+     "margin": 0.014460242507289944,
+     "pass": true
+    }
+   },
+   "all_pass": true,
+   "sampled_onestep_worst_slack": -0.07573218641526491,
+   "sampled_contraction_worst": -0.05935790608660563,
+   "n_samples": 200000,
+   "interval_enclosure_vertex_check": true,
+   "rbar": [
+    0.9813486136945471,
+    0.5514060157672415
+   ],
+   "ell": 5.822023445708129,
+   "rho": 0.96553975749271,
+   "alpha": 0.9733653756713793,
+   "beta": 1.002193987330253,
+   "c0": 0.06643594579787934,
+   "qbar": 1.5579757329290842,
+   "kappa": 0.25090557876025493,
+   "sigma": [
+    0.9913343924471956,
+    1.030569535824022
+   ],
+   "p": [
+    1.0305695358240223,
+    0.9913343924471958
+   ],
+   "P": [
+    [
+     1.062073568168541,
+     0.20915615393788947
+    ],
+    [
+     0.20915615393788944,
+     0.9827438776486509
+    ]
+   ],
+   "KR": [
+    [
+     -0.2300747115578181,
+     -0.15642439740161934
+    ]
+   ],
+   "dA": [
+    [
+     0.0020026775017555165,
+     0.0
+    ],
+    [
+     0.0020047119175018056,
+     0.0020026775017555165
+    ]
+   ],
+   "dB": [
+    [
+     0.006607261455585755
+    ],
+    [
+     0.0002211057933876237
+    ]
+   ],
+   "L": 10,
+   "Nb": 4,
+   "dmax": 3,
+   "Na": 3,
+   "vbar": 0.02,
+   "abar": 0.03,
+   "wbar": 2.0,
+   "rel_unc": 0.03,
+   "ufilt": 5.0,
+   "umax": 5.0,
+   "apriori_ultimate_bound": {
+    "lambda=rho": 7.767405611673189,
+    "lambda=0.98": 11.130463359674405
+   },
+   "apriori_note": "Theorem 2 a-priori bound on ||x||_P; compare with ell (vacuous if larger)."
+  }
+ },
+ "TABLE_CERT": ": TABLE III. Certificate quantities and conditions (machine-readable files `cert_verification_<plant>.json`). C2 column: left-hand side (margin to \u2113). Sampled slack: largest value of f(\u03a0(c,r,K_Rc)) \u2212 \u2113 over 2\u00d710\u2075 sampled (c,r) \u2208 I (must be \u2264 0).\n\n| Plant | \u03c1 | \u03b1 (C1) | \u03b2 | c\u2080 | r\u0304 | q\u0304 (C3) | \u2113 | C2 LHS (margin) | sampled slack | (C1)\u2013(C5) |\n|---|---|---|---|---|---|---|---|---|---|---|\n| DC motor | 0.9044 | 0.9475 | 1.0015 | 0.0187 | [0.296, 1.994] | 2.017 | 2.786 | 2.7672 (0.0187) | -0.0712 | pass |\n| coupled tanks | 0.9655 | 0.9734 | 1.0022 | 0.0664 | [0.981, 0.551] | 1.558 | 5.822 | 5.7783 (0.0437) | -0.0757 | pass |\n",
+ "e12": {
+  "Threshold + filter": {
+   "mean": 0.37663538287297754,
+   "per": {
+    "E1 nominal": 0.1035501153378788,
+    "E2 mult (HD)": 0.8647196959978917,
+    "E2 bias 0.3": 0.21453245435222343,
+    "E2 bias 2.0": 0.5479584373240247,
+    "E2 ramp 0.2/s": 0.4196680494910977,
+    "E3 loss 0.5": 0.10577452538107465,
+    "E4 delay 3": 0.10707344143812089,
+    "E5 bias+net": 0.33065191540421796,
+    "E5 mult+net": 0.8897781981438266,
+    "E10 burst-bias 6 speed": 0.18264699585941885
+   },
+   "switches": 6.895,
+   "interv": 0.12351666666666668,
+   "viol": 0.02
+  },
+  "Tuned threshold + filter": {
+   "mean": 0.36885983910072717,
+   "per": {
+    "E1 nominal": 0.10439423757488353,
+    "E2 mult (HD)": 0.8083926174460689,
+    "E2 bias 0.3": 0.21259676245407072,
+    "E2 bias 2.0": 0.5517288960419973,
+    "E2 ramp 0.2/s": 0.4190062776324039,
+    "E3 loss 0.5": 0.10661787534509141,
+    "E4 delay 3": 0.10783940568308799,
+    "E5 bias+net": 0.3292400831802952,
+    "E5 mult+net": 0.8659896070491062,
+    "E10 burst-bias 6 speed": 0.18279262860026665
+   },
+   "switches": 7.085,
+   "interv": 0.14285,
+   "viol": 0.02
+  },
+  "Fixed R + filter": {
+   "mean": 0.38344085897011737,
+   "per": {
+    "E1 nominal": 0.1036773499193302,
+    "E2 mult (HD)": 0.9519872837554951,
+    "E2 bias 0.3": 0.215179357569175,
+    "E2 bias 2.0": 0.5496120524709444,
+    "E2 ramp 0.2/s": 0.4193329925832018,
+    "E3 loss 0.5": 0.10558496277318159,
+    "E4 delay 3": 0.10722625142168299,
+    "E5 bias+net": 0.30291479477228256,
+    "E5 mult+net": 0.8845686515042305,
+    "E10 burst-bias 6 speed": 0.1943248929316499
+   },
+   "switches": 0.0,
+   "interv": 0.06513333333333333,
+   "viol": 0.015
+  },
+  "Always N + filter": {
+   "mean": 0.4321031881088816,
+   "per": {
+    "E1 nominal": 0.10439423757488353,
+    "E2 mult (HD)": 1.281296664828589,
+    "E2 bias 0.3": 0.16431992134219917,
+    "E2 bias 2.0": 0.627409882267191,
+    "E2 ramp 0.2/s": 0.38084051613784775,
+    "E3 loss 0.5": 0.10661787534509141,
+    "E4 delay 3": 0.10783940568308799,
+    "E5 bias+net": 0.34276656737520944,
+    "E5 mult+net": 1.0300650634923463,
+    "E10 burst-bias 6 speed": 0.17548174704237035
+   },
+   "switches": 0.0,
+   "interv": 0.26009166666666667,
+   "viol": 0.025
+  },
+  "MLP-PPO": {
+   "mean": 0.3694896057539306,
+   "per": {
+    "E1 nominal": 0.10439423757488353,
+    "E2 mult (HD)": 0.8314846446577245,
+    "E2 bias 0.3": 0.21448793370427807,
+    "E2 bias 2.0": 0.5490699408806318,
+    "E2 ramp 0.2/s": 0.4205968007301438,
+    "E3 loss 0.5": 0.10661787534509144,
+    "E4 delay 3": 0.10783940568308799,
+    "E5 bias+net": 0.3032143116969067,
+    "E5 mult+net": 0.8671832287618108,
+    "E10 burst-bias 6 speed": 0.19000767850474717
+   },
+   "switches": 0.86625,
+   "interv": 0.09438541666666668,
+   "viol": 0.015625
+  },
+  "GRU-PPO": {
+   "mean": 0.37227203237793743,
+   "per": {
+    "E1 nominal": 0.10439423757488354,
+    "E2 mult (HD)": 0.8616648733265555,
+    "E2 bias 0.3": 0.2154640101104105,
+    "E2 bias 2.0": 0.5492981983402568,
+    "E2 ramp 0.2/s": 0.4204207349630965,
+    "E3 loss 0.5": 0.10661787534509143,
+    "E4 delay 3": 0.107839405683088,
+    "E5 bias+net": 0.3031691615721546,
+    "E5 mult+net": 0.8710643032445132,
+    "E10 burst-bias 6 speed": 0.18278752361932404
+   },
+   "switches": 0.615,
+   "interv": 0.10182777777777777,
+   "viol": 0.0175
+  },
+  "CVaR-PPO": {
+   "mean": 0.3668942572739262,
+   "per": {
+    "E1 nominal": 0.10439423757488354,
+    "E2 mult (HD)": 0.8015908893897027,
+    "E2 bias 0.3": 0.21556777925104892,
+    "E2 bias 2.0": 0.549313533968754,
+    "E2 ramp 0.2/s": 0.42052016464526576,
+    "E3 loss 0.5": 0.10661787534509141,
+    "E4 delay 3": 0.10783940568308799,
+    "E5 bias+net": 0.30319598264887326,
+    "E5 mult+net": 0.8733724424094526,
+    "E10 burst-bias 6 speed": 0.18653026182310203
+   },
+   "switches": 0.65,
+   "interv": 0.09411388888888889,
+   "viol": 0.015
+  }
+ },
+ "TABLE_E12": ": TABLE XII. Supervisor study (E12, DC motor): RMSE of \u2016x\u2016 per scenario family (mean over 20 test seeds; for PPO variants first averaged over policy seeds), identical estimator, filter and test trajectories.\n\n| Supervisor (all with filter) | seeds | E1 nominal | E2 mult (HD) | E2 bias 0.3 | E2 bias 2.0 | E2 ramp 0.2/s | E3 loss 0.5 | E4 delay 3 | E5 bias+net | E5 mult+net | E10 burst-bias 6 speed | mean | switches | interv. % |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| Threshold + filter | \u2014 | 0.104 | 0.865 | 0.215 | 0.548 | 0.420 | 0.106 | 0.107 | 0.331 | 0.890 | 0.183 | 0.377 | 6.9 | 12.4 |\n| Tuned threshold + filter | \u2014 | 0.104 | 0.808 | 0.213 | 0.552 | 0.419 | 0.107 | 0.108 | 0.329 | 0.866 | 0.183 | 0.369 | 7.1 | 14.3 |\n| Fixed R + filter | \u2014 | 0.104 | 0.952 | 0.215 | 0.550 | 0.419 | 0.106 | 0.107 | 0.303 | 0.885 | 0.194 | 0.383 | 0.0 | 6.5 |\n| Always N + filter | \u2014 | 0.104 | 1.281 | 0.164 | 0.627 | 0.381 | 0.107 | 0.108 | 0.343 | 1.030 | 0.175 | 0.432 | 0.0 | 26.0 |\n| MLP-PPO | 8 | 0.104 | 0.831 | 0.214 | 0.549 | 0.421 | 0.107 | 0.108 | 0.303 | 0.867 | 0.190 | 0.369 | 0.9 | 9.4 |\n| GRU-PPO | 6 | 0.104 | 0.862 | 0.215 | 0.549 | 0.420 | 0.107 | 0.108 | 0.303 | 0.871 | 0.183 | 0.372 | 0.6 | 10.2 |\n| CVaR-PPO | 3 | 0.104 | 0.802 | 0.216 | 0.549 | 0.421 | 0.107 | 0.108 | 0.303 | 0.873 | 0.187 | 0.367 | 0.7 | 9.4 |\n",
+ "e12_vs_tuned": {
+  "Threshold + filter": {
+   "mean": 0.007775543772250346,
+   "lo": 0.001041349234163466,
+   "hi": 0.014509738310337226,
+   "wins": 5,
+   "losses": 1,
+   "better_seeds": null,
+   "nseeds": null
+  },
+  "Fixed R + filter": {
+   "mean": 0.014581019869390206,
+   "lo": -0.00655813589689954,
+   "hi": 0.03572017563567995,
+   "wins": 3,
+   "losses": 0,
+   "better_seeds": null,
+   "nseeds": null
+  },
+  "MLP-PPO": {
+   "mean": 0.0006297666532033941,
+   "lo": -0.012157663477021316,
+   "hi": 0.013417196783428105,
+   "wins": 0,
+   "losses": 1,
+   "better_seeds": 2,
+   "nseeds": 8
+  },
+  "GRU-PPO": {
+   "mean": 0.0034121932772102435,
+   "lo": -0.008514083136217253,
+   "hi": 0.01533846969063774,
+   "wins": 0,
+   "losses": 2,
+   "better_seeds": 0,
+   "nseeds": 6
+  },
+  "CVaR-PPO": {
+   "mean": -0.001965581826800945,
+   "lo": -0.020542346619288315,
+   "hi": 0.016611182965686425,
+   "wins": 0,
+   "losses": 2,
+   "better_seeds": 2,
+   "nseeds": 3
+  }
+ },
+ "TABLE_E12B": ": TABLE XIII. Paired comparison with the tuned threshold rule (E12). \u0394RMSE pooled over families and test seeds with 95 % CI; per-family Wilcoxon (Holm) better/no difference/worse; range of the mean difference across individual policy seeds; number of policy seeds better than the tuned rule.\n\n| Supervisor | \u0394RMSE vs tuned rule | families better / n.s. / worse | per-policy-seed range | seeds better |\n|---|---|---|---|---|\n| Threshold + filter | +0.0078 [+0.0010, +0.0145] | 5 / 4 / 1 | \u2014 | \u2014 |\n| Fixed R + filter | +0.0146 [-0.0066, +0.0357] | 3 / 7 / 0 | \u2014 | \u2014 |\n| MLP-PPO | +0.0006 [-0.0122, +0.0134] | 0 / 9 / 1 | -0.0065 \u2026 +0.0052 | 2/8 |\n| GRU-PPO | +0.0034 [-0.0085, +0.0153] | 0 / 8 / 2 | +0.0005 \u2026 +0.0057 | 0/6 |\n| CVaR-PPO | -0.0020 [-0.0205, +0.0166] | 0 / 8 / 2 | -0.0055 \u2026 +0.0027 | 2/3 |\n",
+ "e15": {
+  "Threshold + filter": {
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.7986271141121666,
+    "viol": 0.0,
+    "contain": 0.6101666666666665,
+    "alarm": 0.1265,
+    "budget_min": 0.8,
+    "sound": 1.0
+   },
+   "E11 gate-riding+net": {
+    "rmse": 0.7504221940651901,
+    "viol": 0.0,
+    "contain": 0.7306666666666666,
+    "alarm": 0.14825,
+    "budget_min": 0.7000000000000001,
+    "sound": 1.0
+   },
+   "E1 nominal": {
+    "rmse": 0.1035501153378788,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E2 mult (HD)": {
+    "rmse": 0.8647196959978917,
+    "viol": 0.1,
+    "contain": 0.6992499999999999,
+    "alarm": 0.46991666666666676,
+    "budget_min": 0.65,
+    "sound": 1.0
+   },
+   "E2 bias 1.0": {
+    "rmse": 0.33196213764043464,
+    "viol": 0.0,
+    "contain": 0.8845833333333333,
+    "alarm": 0.29775,
+    "budget_min": 0.75,
+    "sound": 1.0
+   },
+   "E2 ramp 0.2/s": {
+    "rmse": 0.4196680494910977,
+    "viol": 0.0,
+    "contain": 0.7955,
+    "alarm": 0.24008333333333334,
+    "budget_min": 0.8,
+    "sound": 1.0
+   },
+   "E5 bias+net": {
+    "rmse": 0.33065191540421796,
+    "viol": 0.0,
+    "contain": 0.8905833333333334,
+    "alarm": 0.344,
+    "budget_min": 0.65,
+    "sound": 1.0
+   },
+   "E5 mult+net": {
+    "rmse": 0.8897781981438266,
+    "viol": 0.1,
+    "contain": 0.7083333333333335,
+    "alarm": 0.4812499999999999,
+    "budget_min": 0.65,
+    "sound": 1.0
+   },
+   "E10 long bias 6 speed\u2020": {
+    "rmse": 2.906886167752711,
+    "viol": 0.9,
+    "contain": 0.8231666666666667,
+    "alarm": 0.4241666666666667,
+    "budget_min": 0.6000000000000001,
+    "sound": 1.0
+   }
+  },
+  "Threshold + PR": {
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.9275047656727977,
+    "viol": 0.0,
+    "contain": 0.5450833333333334,
+    "alarm": 0.14766666666666667,
+    "budget_min": 0.8,
+    "sound": 1.0
+   },
+   "E11 gate-riding+net": {
+    "rmse": 0.8396763766092349,
+    "viol": 0.0,
+    "contain": 0.6920833333333333,
+    "alarm": 0.1703333333333333,
+    "budget_min": 0.7000000000000001,
+    "sound": 1.0
+   },
+   "E1 nominal": {
+    "rmse": 0.1035501153378788,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E2 mult (HD)": {
+    "rmse": 0.7884175786163873,
+    "viol": 0.0,
+    "contain": 0.6791666666666668,
+    "alarm": 0.4644166666666667,
+    "budget_min": 0.7000000000000001,
+    "sound": 1.0
+   },
+   "E2 bias 1.0": {
+    "rmse": 0.296206120575458,
+    "viol": 0.0,
+    "contain": 0.909,
+    "alarm": 0.32675,
+    "budget_min": 0.7000000000000001,
+    "sound": 1.0
+   },
+   "E2 ramp 0.2/s": {
+    "rmse": 0.47984212471478005,
+    "viol": 0.0,
+    "contain": 0.771,
+    "alarm": 0.2609166666666667,
+    "budget_min": 0.8,
+    "sound": 1.0
+   },
+   "E5 bias+net": {
+    "rmse": 0.2917973059718927,
+    "viol": 0.0,
+    "contain": 0.9092499999999999,
+    "alarm": 0.3280833333333334,
+    "budget_min": 0.75,
+    "sound": 1.0
+   },
+   "E5 mult+net": {
+    "rmse": 0.902263936216,
+    "viol": 0.1,
+    "contain": 0.6874166666666667,
+    "alarm": 0.4873333333333334,
+    "budget_min": 0.65,
+    "sound": 1.0
+   },
+   "E10 long bias 6 speed\u2020": {
+    "rmse": 0.5896810320805546,
+    "viol": 0.1,
+    "contain": 0.9694166666666668,
+    "alarm": 0.409,
+    "budget_min": 0.7000000000000001,
+    "sound": 1.0
+   }
+  },
+  "Threshold + Auth2": {
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.10804204504582686,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E11 gate-riding+net": {
+    "rmse": 0.11485154240155462,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.03683333333333332,
+    "budget_min": 0.65,
+    "sound": 1.0
+   },
+   "E1 nominal": {
+    "rmse": 0.10359705333437583,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E2 mult (HD)": {
+    "rmse": 0.10657504351637093,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E2 bias 1.0": {
+    "rmse": 0.10518544399781853,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E2 ramp 0.2/s": {
+    "rmse": 0.10773110143005557,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E5 bias+net": {
+    "rmse": 0.11066600101363078,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.03683333333333332,
+    "budget_min": 0.65,
+    "sound": 1.0
+   },
+   "E5 mult+net": {
+    "rmse": 0.11320495069502393,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.03683333333333332,
+    "budget_min": 0.65,
+    "sound": 1.0
+   },
+   "E10 long bias 6 speed\u2020": {
+    "rmse": 0.5199588818339257,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   }
+  },
+  "Threshold + Auth3": {
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.11156777540586285,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E11 gate-riding+net": {
+    "rmse": 0.12160429388862763,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.12308333333333335,
+    "budget_min": 0.65,
+    "sound": 1.0
+   },
+   "E1 nominal": {
+    "rmse": 0.10366087369677761,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E2 mult (HD)": {
+    "rmse": 0.11046365766921917,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E2 bias 1.0": {
+    "rmse": 0.10492363699453003,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E2 ramp 0.2/s": {
+    "rmse": 0.10651408286815775,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E5 bias+net": {
+    "rmse": 0.11110027030980218,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.12308333333333335,
+    "budget_min": 0.65,
+    "sound": 1.0
+   },
+   "E5 mult+net": {
+    "rmse": 0.11691653710681024,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.12308333333333335,
+    "budget_min": 0.65,
+    "sound": 1.0
+   },
+   "E10 long bias 6 speed\u2020": {
+    "rmse": 0.5241467927000077,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   }
+  },
+  "Threshold + Auth5": {
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.11815386494449893,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E11 gate-riding+net": {
+    "rmse": 0.1387756443189909,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.35,
+    "budget_min": 0.65,
+    "sound": 1.0
+   },
+   "E1 nominal": {
+    "rmse": 0.10382470196189364,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E2 mult (HD)": {
+    "rmse": 0.11739772555215469,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E2 bias 1.0": {
+    "rmse": 0.10596837722810766,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E2 ramp 0.2/s": {
+    "rmse": 0.10852513247586415,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E5 bias+net": {
+    "rmse": 0.11916916336956014,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.35,
+    "budget_min": 0.65,
+    "sound": 1.0
+   },
+   "E5 mult+net": {
+    "rmse": 0.12428412314963673,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.35,
+    "budget_min": 0.65,
+    "sound": 1.0
+   },
+   "E10 long bias 6 speed\u2020": {
+    "rmse": 0.5254872335620991,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   }
+  },
+  "Threshold + Auth3 PR": {
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.11156777540586285,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E11 gate-riding+net": {
+    "rmse": 0.12092708740008991,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.12308333333333335,
+    "budget_min": 0.65,
+    "sound": 1.0
+   },
+   "E1 nominal": {
+    "rmse": 0.10366087369677761,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E2 mult (HD)": {
+    "rmse": 0.11046365766921917,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E2 bias 1.0": {
+    "rmse": 0.10492363699453003,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E2 ramp 0.2/s": {
+    "rmse": 0.10651408286815775,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E5 bias+net": {
+    "rmse": 0.11205019493178048,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.12308333333333335,
+    "budget_min": 0.65,
+    "sound": 1.0
+   },
+   "E5 mult+net": {
+    "rmse": 0.11799042379979471,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.12308333333333335,
+    "budget_min": 0.65,
+    "sound": 1.0
+   },
+   "E10 long bias 6 speed\u2020": {
+    "rmse": 0.5241467927000077,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   }
+  },
+  "Fixed R + filter": {
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.7936783457747152,
+    "viol": 0.0,
+    "contain": 0.61,
+    "alarm": 0.12624999999999997,
+    "budget_min": 0.8,
+    "sound": 1.0
+   },
+   "E11 gate-riding+net": {
+    "rmse": 0.7387491881191561,
+    "viol": 0.0,
+    "contain": 0.7311666666666666,
+    "alarm": 0.15491666666666665,
+    "budget_min": 0.7000000000000001,
+    "sound": 1.0
+   }
+  },
+  "LQR": {
+   "E11 gate-riding (white-box)": {
+    "rmse": 1.138813911400376,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E11 gate-riding+net": {
+    "rmse": 1.4214864276444477,
+    "viol": 0.2,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   }
+  },
+  "Robust H\u221e": {
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.8009175798320152,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E11 gate-riding+net": {
+    "rmse": 0.7500354900285627,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   }
+  },
+  "Robust MPC": {
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.8014123875488925,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E11 gate-riding+net": {
+    "rmse": 0.7578327987306586,
+    "viol": 0.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   }
+  },
+  "Huang\u2013Dong [1]": {
+   "E11 gate-riding (white-box)": {
+    "rmse": 2.0654141615630803,
+    "viol": 0.5,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   },
+   "E11 gate-riding+net": {
+    "rmse": 55.83037137267328,
+    "viol": 1.0,
+    "contain": 1.0,
+    "alarm": 0.0,
+    "budget_min": NaN,
+    "sound": 1.0
+   }
+  }
+ },
+ "TABLE_E15": ": TABLE XIV. Threat-model hardening (E15, DC motor, risk-threshold supervisor): RMSE (violation-episode %, containment %) over 20 seeds. PR = persistent-attack rule + recovery mode with certified time budget; AuthM = set estimator fuses only authenticated packets (every M-th).\n\n| Variant | E11 gate-riding (white-box) | E11 gate-riding+net | E1 nominal | E2 mult (HD) | E2 bias 1.0 | E2 ramp 0.2/s | E5 bias+net | E5 mult+net | E10 long bias 6 speed\u2020 |\n|---|---|---|---|---|---|---|---|---|---|\n| Threshold + filter | 0.799 (0, 61 %) | 0.750 (0, 73 %) | 0.104 (0, 100 %) | 0.865 (10, 70 %) | 0.332 (0, 88 %) | 0.420 (0, 80 %) | 0.331 (0, 89 %) | 0.890 (10, 71 %) | 2.907 (90, 82 %) |\n| Threshold + PR | 0.928 (0, 55 %) | 0.840 (0, 69 %) | 0.104 (0, 100 %) | 0.788 (0, 68 %) | 0.296 (0, 91 %) | 0.480 (0, 77 %) | 0.292 (0, 91 %) | 0.902 (10, 69 %) | 0.590 (10, 97 %) |\n| Threshold + Auth2 | 0.108 (0, 100 %) | 0.115 (0, 100 %) | 0.104 (0, 100 %) | 0.107 (0, 100 %) | 0.105 (0, 100 %) | 0.108 (0, 100 %) | 0.111 (0, 100 %) | 0.113 (0, 100 %) | 0.520 (0, 100 %) |\n| Threshold + Auth3 | 0.112 (0, 100 %) | 0.122 (0, 100 %) | 0.104 (0, 100 %) | 0.110 (0, 100 %) | 0.105 (0, 100 %) | 0.107 (0, 100 %) | 0.111 (0, 100 %) | 0.117 (0, 100 %) | 0.524 (0, 100 %) |\n| Threshold + Auth5 | 0.118 (0, 100 %) | 0.139 (0, 100 %) | 0.104 (0, 100 %) | 0.117 (0, 100 %) | 0.106 (0, 100 %) | 0.109 (0, 100 %) | 0.119 (0, 100 %) | 0.124 (0, 100 %) | 0.525 (0, 100 %) |\n| Threshold + Auth3 PR | 0.112 (0, 100 %) | 0.121 (0, 100 %) | 0.104 (0, 100 %) | 0.110 (0, 100 %) | 0.105 (0, 100 %) | 0.107 (0, 100 %) | 0.112 (0, 100 %) | 0.118 (0, 100 %) | 0.524 (0, 100 %) |\n| Fixed R + filter | 0.794 (0) | 0.739 (0) | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| LQR | 1.139 (0) | 1.421 (20) | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Robust H\u221e | 0.801 (0) | 0.750 (0) | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Robust MPC | 0.801 (0) | 0.758 (0) | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Huang\u2013Dong [1] | 2.065 (50) | 55.8 (100) | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n",
+ "e15_budget": {
+  "min_budget_s": 0.6000000000000001,
+  "all_sound": true,
+  "n_alarms": 6327
+ },
+ "tank": {
+  "MLP-PPO": {
+   "E1 nominal": {
+    "rmse": 0.32377688400408333,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E2 mult (HD)": {
+    "rmse": 1.0483594948230006,
+    "viol": 0.0,
+    "contain": 0.5707638888888888,
+    "infeas": 0.010902777777777779
+   },
+   "E2 bias 1.0": {
+    "rmse": 0.3992309632228065,
+    "viol": 0.0,
+    "contain": 0.9720833333333333,
+    "infeas": 0.0
+   },
+   "E3 loss 0.5": {
+    "rmse": 0.3261402728463876,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E4 delay 3": {
+    "rmse": 0.32615610393170985,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E5 bias+net": {
+    "rmse": 0.42572805634770694,
+    "viol": 0.0,
+    "contain": 0.9539583333333332,
+    "infeas": 0.0
+   },
+   "E10 burst-bias 6 speed": {
+    "rmse": 0.36762799545598535,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E10 long bias 6 speed\u2020": {
+    "rmse": 1.112287679108508,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.003680555555555556
+   },
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.5370906550091689,
+    "viol": 0.0,
+    "contain": 0.6187500000000001,
+    "infeas": 0.0
+   }
+  },
+  "Threshold + filter": {
+   "E1 nominal": {
+    "rmse": 0.32377688400408333,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E2 mult (HD)": {
+    "rmse": 1.0543769993486989,
+    "viol": 0.0,
+    "contain": 0.5745833333333333,
+    "infeas": 0.010833333333333332
+   },
+   "E2 bias 1.0": {
+    "rmse": 0.4051326872166812,
+    "viol": 0.0,
+    "contain": 0.9722916666666667,
+    "infeas": 0.0
+   },
+   "E3 loss 0.5": {
+    "rmse": 0.32614027284638764,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E4 delay 3": {
+    "rmse": 0.32615610393170985,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E5 bias+net": {
+    "rmse": 0.4323474891212558,
+    "viol": 0.0,
+    "contain": 0.9539583333333332,
+    "infeas": 0.0
+   },
+   "E10 burst-bias 6 speed": {
+    "rmse": 0.3545224490080238,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E10 long bias 6 speed\u2020": {
+    "rmse": 1.114541716586954,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.00375
+   },
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.5368939811288421,
+    "viol": 0.0,
+    "contain": 0.623125,
+    "infeas": 0.0
+   }
+  },
+  "Fixed R + filter": {
+   "E1 nominal": {
+    "rmse": 0.3158949625468753,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E2 mult (HD)": {
+    "rmse": 1.015407181722241,
+    "viol": 0.0,
+    "contain": 0.5560416666666667,
+    "infeas": 0.014374999999999999
+   },
+   "E2 bias 1.0": {
+    "rmse": 0.3879308535535585,
+    "viol": 0.0,
+    "contain": 0.9720833333333333,
+    "infeas": 0.0
+   },
+   "E3 loss 0.5": {
+    "rmse": 0.3183814284293162,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E4 delay 3": {
+    "rmse": 0.3191481824913188,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E5 bias+net": {
+    "rmse": 0.4150377022285796,
+    "viol": 0.0,
+    "contain": 0.9539583333333332,
+    "infeas": 0.0
+   },
+   "E10 burst-bias 6 speed": {
+    "rmse": 0.31305347298673675,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E10 long bias 6 speed\u2020": {
+    "rmse": 1.1094942483799077,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.004166666666666667
+   },
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.5321629357570161,
+    "viol": 0.0,
+    "contain": 0.6104166666666667,
+    "infeas": 0.0
+   }
+  },
+  "Always N + filter": {
+   "E1 nominal": {
+    "rmse": 0.32377688400408333,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E2 mult (HD)": {
+    "rmse": 1.0789645505783192,
+    "viol": 0.0,
+    "contain": 0.6239583333333333,
+    "infeas": 0.0035416666666666665
+   },
+   "E2 bias 1.0": {
+    "rmse": 0.43684497332578853,
+    "viol": 0.0,
+    "contain": 0.971875,
+    "infeas": 0.0
+   },
+   "E3 loss 0.5": {
+    "rmse": 0.32614027284638764,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E4 delay 3": {
+    "rmse": 0.32615610393170985,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E5 bias+net": {
+    "rmse": 0.4797053505861026,
+    "viol": 0.0,
+    "contain": 0.9541666666666666,
+    "infeas": 0.0
+   },
+   "E10 burst-bias 6 speed": {
+    "rmse": 0.3801013756231134,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E10 long bias 6 speed\u2020": {
+    "rmse": 1.0412538566811889,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0016666666666666666
+   },
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.5772335988262975,
+    "viol": 0.0,
+    "contain": 0.6222916666666667,
+    "infeas": 0.0
+   }
+  },
+  "Always N w/o filter": {
+   "E1 nominal": {
+    "rmse": 0.40359911149889854,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E2 mult (HD)": {
+    "rmse": 7.579233937337466,
+    "viol": 1.0,
+    "contain": 0.8616666666666667,
+    "infeas": 0.0
+   },
+   "E2 bias 1.0": {
+    "rmse": 0.5944326051395638,
+    "viol": 0.0,
+    "contain": 0.9725000000000001,
+    "infeas": 0.0
+   },
+   "E3 loss 0.5": {
+    "rmse": 0.4051298201041802,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E4 delay 3": {
+    "rmse": 0.4049351655200547,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E5 bias+net": {
+    "rmse": 0.6106312705558551,
+    "viol": 0.0,
+    "contain": 0.9558333333333333,
+    "infeas": 0.0
+   },
+   "E10 burst-bias 6 speed": {
+    "rmse": 0.4861882255782466,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E10 long bias 6 speed\u2020": {
+    "rmse": 1.15373102949813,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.732958119702422,
+    "viol": 0.0,
+    "contain": 0.62625,
+    "infeas": 0.0
+   }
+  },
+  "Threshold + PR": {
+   "E1 nominal": {
+    "rmse": 0.32377688400408333,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E2 mult (HD)": {
+    "rmse": 0.6604270504387888,
+    "viol": 0.0,
+    "contain": 0.5702083333333333,
+    "infeas": 0.0
+   },
+   "E2 bias 1.0": {
+    "rmse": 0.4521095523232111,
+    "viol": 0.0,
+    "contain": 0.9614583333333334,
+    "infeas": 0.0
+   },
+   "E3 loss 0.5": {
+    "rmse": 0.32614027284638764,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E4 delay 3": {
+    "rmse": 0.32615610393170985,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E5 bias+net": {
+    "rmse": 0.452277333330341,
+    "viol": 0.0,
+    "contain": 0.945625,
+    "infeas": 0.0
+   },
+   "E10 burst-bias 6 speed": {
+    "rmse": 0.3546179656646947,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E10 long bias 6 speed\u2020": {
+    "rmse": 0.38903376942235646,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.5116524159547882,
+    "viol": 0.0,
+    "contain": 0.5902083333333333,
+    "infeas": 0.0
+   }
+  },
+  "Threshold + Auth3": {
+   "E1 nominal": {
+    "rmse": 0.3249114461510218,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E2 mult (HD)": {
+    "rmse": 0.3384977419838642,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E2 bias 1.0": {
+    "rmse": 0.33325840399939133,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E3 loss 0.5": {
+    "rmse": 0.3282792533893997,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E4 delay 3": {
+    "rmse": 0.32656011784771766,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E5 bias+net": {
+    "rmse": 0.33401652198450604,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E10 burst-bias 6 speed": {
+    "rmse": 0.34502724352890396,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E10 long bias 6 speed\u2020": {
+    "rmse": 0.3433593567059738,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.32744359185361577,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   }
+  },
+  "LQR": {
+   "E1 nominal": {
+    "rmse": 0.40359911149889854,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E2 mult (HD)": {
+    "rmse": 7.579233937337466,
+    "viol": 1.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E2 bias 1.0": {
+    "rmse": 0.5944326051395638,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E3 loss 0.5": {
+    "rmse": 0.4051298201041802,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E4 delay 3": {
+    "rmse": 0.4049351655200547,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E5 bias+net": {
+    "rmse": 0.6185760308619367,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E10 burst-bias 6 speed": {
+    "rmse": 0.4861882255782466,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E10 long bias 6 speed\u2020": {
+    "rmse": 1.15373102949813,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E11 gate-riding (white-box)": {
+    "rmse": 1.3037029031340837,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   }
+  },
+  "Robust H\u221e": {
+   "E1 nominal": {
+    "rmse": 0.35428738780502045,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E2 mult (HD)": {
+    "rmse": 0.6422457360655084,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E2 bias 1.0": {
+    "rmse": 0.4256089909784886,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E3 loss 0.5": {
+    "rmse": 0.3602758681143656,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E4 delay 3": {
+    "rmse": 0.365783175992512,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E5 bias+net": {
+    "rmse": 0.43971952345236076,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E10 burst-bias 6 speed": {
+    "rmse": 0.35904050040469465,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E10 long bias 6 speed\u2020": {
+    "rmse": 0.4768943012791852,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.5373445162406679,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   }
+  },
+  "Robust MPC": {
+   "E1 nominal": {
+    "rmse": 0.4156940756565187,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E2 mult (HD)": {
+    "rmse": 1.1745320240762855,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E2 bias 1.0": {
+    "rmse": 0.4890523958006546,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E3 loss 0.5": {
+    "rmse": 0.4171440835407941,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E4 delay 3": {
+    "rmse": 0.417760321289882,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E5 bias+net": {
+    "rmse": 0.5125146818679902,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E10 burst-bias 6 speed": {
+    "rmse": 0.4129375063447148,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E10 long bias 6 speed\u2020": {
+    "rmse": 1.5656985899612925,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.6142374303724711,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   }
+  },
+  "Huang\u2013Dong [1]": {
+   "E1 nominal": {
+    "rmse": 0.611258177946133,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E2 mult (HD)": {
+    "rmse": 0.6562127876091953,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E2 bias 1.0": {
+    "rmse": 0.6437112915850919,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E3 loss 0.5": {
+    "rmse": 0.6380881350916499,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E4 delay 3": {
+    "rmse": 0.6608020794093497,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E5 bias+net": {
+    "rmse": 0.6439818535687996,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E10 burst-bias 6 speed": {
+    "rmse": 0.7292864524758751,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E10 long bias 6 speed\u2020": {
+    "rmse": 1.1148559620603589,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   },
+   "E11 gate-riding (white-box)": {
+    "rmse": 0.7183589240491985,
+    "viol": 0.0,
+    "contain": 1.0,
+    "infeas": 0.0
+   }
+  }
+ },
+ "tank_inenv": {
+  "n": 360,
+  "viol": 0,
+  "infeas": 0.0,
+  "contain_min": 1.0,
+  "cp95": 0.00828695087523565
+ },
+ "TABLE_TANK": ": TABLE VIII. Second certified benchmark (coupled tanks, 20 paired seeds): RMSE of \u2016x\u2016 in cm (violation-episode %).\n\n| Method | E1 nominal | E2 mult (HD) | E2 bias 1.0 | E3 loss 0.5 | E4 delay 3 | E5 bias+net | E10 burst-bias 6 speed | E10 long bias 6 speed\u2020 | E11 gate-riding (white-box) |\n|---|---|---|---|---|---|---|---|---|---|\n| MLP-PPO (3 seeds) | 0.324 (0) | 1.048 (0) | 0.399 (0) | 0.326 (0) | 0.326 (0) | 0.426 (0) | 0.368 (0) | 1.112 (0) | 0.537 (0) |\n| Threshold + filter | 0.324 (0) | 1.054 (0) | 0.405 (0) | 0.326 (0) | 0.326 (0) | 0.432 (0) | 0.355 (0) | 1.115 (0) | 0.537 (0) |\n| Fixed R + filter | 0.316 (0) | 1.015 (0) | 0.388 (0) | 0.318 (0) | 0.319 (0) | 0.415 (0) | 0.313 (0) | 1.109 (0) | 0.532 (0) |\n| Always N + filter | 0.324 (0) | 1.079 (0) | 0.437 (0) | 0.326 (0) | 0.326 (0) | 0.480 (0) | 0.380 (0) | 1.041 (0) | 0.577 (0) |\n| Always N w/o filter | 0.404 (0) | 7.579 (100) | 0.594 (0) | 0.405 (0) | 0.405 (0) | 0.611 (0) | 0.486 (0) | 1.154 (0) | 0.733 (0) |\n| Threshold + PR | 0.324 (0) | 0.660 (0) | 0.452 (0) | 0.326 (0) | 0.326 (0) | 0.452 (0) | 0.355 (0) | 0.389 (0) | 0.512 (0) |\n| Threshold + Auth3 | 0.325 (0) | 0.338 (0) | 0.333 (0) | 0.328 (0) | 0.327 (0) | 0.334 (0) | 0.345 (0) | 0.343 (0) | 0.327 (0) |\n| LQR | 0.404 (0) | 7.579 (100) | 0.594 (0) | 0.405 (0) | 0.405 (0) | 0.619 (0) | 0.486 (0) | 1.154 (0) | 1.304 (0) |\n| Robust H\u221e | 0.354 (0) | 0.642 (0) | 0.426 (0) | 0.360 (0) | 0.366 (0) | 0.440 (0) | 0.359 (0) | 0.477 (0) | 0.537 (0) |\n| Robust MPC | 0.416 (0) | 1.175 (0) | 0.489 (0) | 0.417 (0) | 0.418 (0) | 0.513 (0) | 0.413 (0) | 1.566 (0) | 0.614 (0) |\n| Huang\u2013Dong [1] | 0.611 (0) | 0.656 (0) | 0.644 (0) | 0.638 (0) | 0.661 (0) | 0.644 (0) | 0.729 (0) | 1.115 (0) | 0.718 (0) |\n",
+ "e13": [
+  {
+   "method": "Always N + filter",
+   "lam": 0.9045,
+   "abar": 0.03,
+   "scenario": "E1 nominal",
+   "rmse": 0.1034529902784702,
+   "energy": 1.3787273210840751,
+   "interv": 0.05777777777777778,
+   "thm2": 1.0,
+   "bound": 0.40849486639615024,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.9045,
+   "abar": 0.03,
+   "scenario": "E2 mult (HD)",
+   "rmse": 1.0205855250016245,
+   "energy": 1.9494652712771194,
+   "interv": 0.572,
+   "thm2": 0.0,
+   "bound": 2.6426050824785703,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.9045,
+   "abar": 0.03,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10556606923554314,
+   "energy": 1.4030071525493972,
+   "interv": 0.12288888888888888,
+   "thm2": 1.0,
+   "bound": 0.42958042757273507,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.9045,
+   "abar": 0.03,
+   "scenario": "E5 bias+net",
+   "rmse": 0.294450416806434,
+   "energy": 2.240763279851385,
+   "interv": 0.4268888888888889,
+   "thm2": 0.0,
+   "bound": 1.6009721597895192,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.9045,
+   "abar": 0.06,
+   "scenario": "E1 nominal",
+   "rmse": 0.1034526224830043,
+   "energy": 1.3786949990351824,
+   "interv": 0.057888888888888886,
+   "thm2": 1.0,
+   "bound": 0.4087270276548934,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.9045,
+   "abar": 0.06,
+   "scenario": "E2 mult (HD)",
+   "rmse": 1.1245136594763936,
+   "energy": 1.956499792081314,
+   "interv": 0.589111111111111,
+   "thm2": 0.0,
+   "bound": 2.6917474634266245,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.9045,
+   "abar": 0.06,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10556634681859448,
+   "energy": 1.4030052822933647,
+   "interv": 0.12311111111111112,
+   "thm2": 1.0,
+   "bound": 0.4298493588859864,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.9045,
+   "abar": 0.06,
+   "scenario": "E5 bias+net",
+   "rmse": 0.321603718243601,
+   "energy": 2.283140737926774,
+   "interv": 0.4404444444444444,
+   "thm2": 0.0,
+   "bound": 1.6022340105519957,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.92,
+   "abar": 0.03,
+   "scenario": "E1 nominal",
+   "rmse": 0.10360518285264515,
+   "energy": 1.3873136934445485,
+   "interv": 0.05477777777777778,
+   "thm2": 1.0,
+   "bound": 0.4859914137736881,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.92,
+   "abar": 0.03,
+   "scenario": "E2 mult (HD)",
+   "rmse": 1.0514820899887831,
+   "energy": 2.0617009283040946,
+   "interv": 0.5713333333333334,
+   "thm2": 0.0,
+   "bound": 2.7399887944369063,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.92,
+   "abar": 0.03,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10571143404590903,
+   "energy": 1.4125675571538374,
+   "interv": 0.11788888888888889,
+   "thm2": 1.0,
+   "bound": 0.506187334025355,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.92,
+   "abar": 0.03,
+   "scenario": "E5 bias+net",
+   "rmse": 0.29597322856374836,
+   "energy": 2.28929070998161,
+   "interv": 0.4202222222222222,
+   "thm2": 0.0,
+   "bound": 1.686916909979561,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.92,
+   "abar": 0.06,
+   "scenario": "E1 nominal",
+   "rmse": 0.10360474893014061,
+   "energy": 1.3872891894286794,
+   "interv": 0.05466666666666666,
+   "thm2": 1.0,
+   "bound": 0.48627032944144155,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.92,
+   "abar": 0.06,
+   "scenario": "E2 mult (HD)",
+   "rmse": 1.1710556048542873,
+   "energy": 2.1502177964569786,
+   "interv": 0.5850000000000001,
+   "thm2": 0.0,
+   "bound": 2.998052395789677,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.92,
+   "abar": 0.06,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10571172665751113,
+   "energy": 1.4125705716463202,
+   "interv": 0.11788888888888889,
+   "thm2": 1.0,
+   "bound": 0.5064984109980271,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.92,
+   "abar": 0.06,
+   "scenario": "E5 bias+net",
+   "rmse": 0.32200691848426216,
+   "energy": 2.3358128496350967,
+   "interv": 0.4335555555555556,
+   "thm2": 0.0,
+   "bound": 1.6837722291552355,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.94,
+   "abar": 0.03,
+   "scenario": "E1 nominal",
+   "rmse": 0.1038836308851597,
+   "energy": 1.4032732965538517,
+   "interv": 0.049444444444444444,
+   "thm2": 1.0,
+   "bound": 0.6452062147979498,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.94,
+   "abar": 0.03,
+   "scenario": "E2 mult (HD)",
+   "rmse": 1.1232791832226987,
+   "energy": 2.1737065144009105,
+   "interv": 0.5654444444444445,
+   "thm2": 0.0,
+   "bound": 3.0119214099532647,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.94,
+   "abar": 0.03,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10597947816415138,
+   "energy": 1.429680582289268,
+   "interv": 0.11166666666666666,
+   "thm2": 1.0,
+   "bound": 0.6643625608431422,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.94,
+   "abar": 0.03,
+   "scenario": "E5 bias+net",
+   "rmse": 0.29890600270995954,
+   "energy": 2.3657886278621985,
+   "interv": 0.41044444444444445,
+   "thm2": 0.0,
+   "bound": 1.8686975605504954,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.94,
+   "abar": 0.06,
+   "scenario": "E1 nominal",
+   "rmse": 0.10388304694273283,
+   "energy": 1.4032318377572588,
+   "interv": 0.04933333333333333,
+   "thm2": 1.0,
+   "bound": 0.6455812539813395,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.94,
+   "abar": 0.06,
+   "scenario": "E2 mult (HD)",
+   "rmse": 1.170349335643767,
+   "energy": 2.230483641560363,
+   "interv": 0.5866666666666667,
+   "thm2": 0.0,
+   "bound": 3.0521501921541563,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.94,
+   "abar": 0.06,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10598029644018184,
+   "energy": 1.4297367826028804,
+   "interv": 0.11166666666666666,
+   "thm2": 1.0,
+   "bound": 0.6647665053452374,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.94,
+   "abar": 0.06,
+   "scenario": "E5 bias+net",
+   "rmse": 0.3232976438947372,
+   "energy": 2.418189939173821,
+   "interv": 0.42244444444444446,
+   "thm2": 0.0,
+   "bound": 1.8576025963621448,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.96,
+   "abar": 0.03,
+   "scenario": "E1 nominal",
+   "rmse": 0.10424503916952234,
+   "energy": 1.4241905121784437,
+   "interv": 0.044000000000000004,
+   "thm2": 1.0,
+   "bound": 0.9634642841628401,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.96,
+   "abar": 0.03,
+   "scenario": "E2 mult (HD)",
+   "rmse": 1.210557868836716,
+   "energy": 2.354104450423956,
+   "interv": 0.5672222222222222,
+   "thm2": 0.0,
+   "bound": 3.2914627248999326,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.96,
+   "abar": 0.03,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10632798020028288,
+   "energy": 1.4517090698449837,
+   "interv": 0.10677777777777779,
+   "thm2": 1.0,
+   "bound": 0.9822158702228884,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.96,
+   "abar": 0.03,
+   "scenario": "E5 bias+net",
+   "rmse": 0.30463739543608137,
+   "energy": 2.4653234814877973,
+   "interv": 0.4018888888888889,
+   "thm2": 1.0,
+   "bound": 2.242385440384531,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.96,
+   "abar": 0.06,
+   "scenario": "E1 nominal",
+   "rmse": 0.10424460861550673,
+   "energy": 1.4241552563902296,
+   "interv": 0.04388888888888889,
+   "thm2": 1.0,
+   "bound": 0.9640307895425234,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.96,
+   "abar": 0.06,
+   "scenario": "E2 mult (HD)",
+   "rmse": 1.3244295357645688,
+   "energy": 2.5632957082186434,
+   "interv": 0.5793333333333333,
+   "thm2": 0.0,
+   "bound": 3.469781061652888,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.96,
+   "abar": 0.06,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10632907908224827,
+   "energy": 1.451775352352686,
+   "interv": 0.10677777777777779,
+   "thm2": 1.0,
+   "bound": 0.9828062598575321,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.96,
+   "abar": 0.06,
+   "scenario": "E5 bias+net",
+   "rmse": 0.3262634321910082,
+   "energy": 2.5195712614765053,
+   "interv": 0.4137777777777778,
+   "thm2": 1.0,
+   "bound": 2.2299177946824944,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.98,
+   "abar": 0.03,
+   "scenario": "E1 nominal",
+   "rmse": 0.10447214408498408,
+   "energy": 1.4372147981962098,
+   "interv": 0.038000000000000006,
+   "thm2": 1.0,
+   "bound": 1.9164130916193103,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.98,
+   "abar": 0.03,
+   "scenario": "E2 mult (HD)",
+   "rmse": 1.3470781375831915,
+   "energy": 2.922750371005755,
+   "interv": 0.5612222222222222,
+   "thm2": 1.0,
+   "bound": 4.390574893800372,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.98,
+   "abar": 0.03,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10655891219185351,
+   "energy": 1.4665009597563974,
+   "interv": 0.10044444444444443,
+   "thm2": 1.0,
+   "bound": 1.9370420844601466,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.98,
+   "abar": 0.03,
+   "scenario": "E5 bias+net",
+   "rmse": 0.33223355123646425,
+   "energy": 2.6177814422021815,
+   "interv": 0.40166666666666667,
+   "thm2": 1.0,
+   "bound": 3.2937825405567547,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.98,
+   "abar": 0.06,
+   "scenario": "E1 nominal",
+   "rmse": 0.10447281235603775,
+   "energy": 1.4372522842912845,
+   "interv": 0.038000000000000006,
+   "thm2": 1.0,
+   "bound": 1.9175614187787906,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.98,
+   "abar": 0.06,
+   "scenario": "E2 mult (HD)",
+   "rmse": 1.3879286207122412,
+   "energy": 2.967053093518222,
+   "interv": 0.5713333333333334,
+   "thm2": 1.0,
+   "bound": 4.3459637389158186,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.98,
+   "abar": 0.06,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10655911945120991,
+   "energy": 1.4665040107237741,
+   "interv": 0.10044444444444443,
+   "thm2": 1.0,
+   "bound": 1.9382126291383817,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Always N + filter",
+   "lam": 0.98,
+   "abar": 0.06,
+   "scenario": "E5 bias+net",
+   "rmse": 0.3347080548990549,
+   "energy": 2.6493144388055794,
+   "interv": 0.401,
+   "thm2": 1.0,
+   "bound": 3.3025622224506908,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.9045,
+   "abar": 0.03,
+   "scenario": "E1 nominal",
+   "rmse": 0.1034529902784702,
+   "energy": 1.3787273210840751,
+   "interv": 0.05777777777777778,
+   "thm2": 1.0,
+   "bound": 0.40849486639615024,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.9045,
+   "abar": 0.03,
+   "scenario": "E2 mult (HD)",
+   "rmse": 0.7995509301699365,
+   "energy": 1.7715836311907742,
+   "interv": 0.1842222222222222,
+   "thm2": 1.0,
+   "bound": 2.2234889429663323,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.9045,
+   "abar": 0.03,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10556606923554314,
+   "energy": 1.4030071525493972,
+   "interv": 0.12288888888888888,
+   "thm2": 1.0,
+   "bound": 0.42958042757273507,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.9045,
+   "abar": 0.03,
+   "scenario": "E5 bias+net",
+   "rmse": 0.3121955022878284,
+   "energy": 1.920767928933981,
+   "interv": 0.20566666666666666,
+   "thm2": 0.0,
+   "bound": 1.598328109413356,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.9045,
+   "abar": 0.06,
+   "scenario": "E1 nominal",
+   "rmse": 0.1034526224830043,
+   "energy": 1.3786949990351824,
+   "interv": 0.057888888888888886,
+   "thm2": 1.0,
+   "bound": 0.4087270276548934,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.9045,
+   "abar": 0.06,
+   "scenario": "E2 mult (HD)",
+   "rmse": 1.0288736712339563,
+   "energy": 1.9267539830940486,
+   "interv": 0.20933333333333334,
+   "thm2": 0.0,
+   "bound": 2.5532367142506347,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.9045,
+   "abar": 0.06,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10556634681859448,
+   "energy": 1.4030052822933647,
+   "interv": 0.12311111111111112,
+   "thm2": 1.0,
+   "bound": 0.4298493588859864,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.9045,
+   "abar": 0.06,
+   "scenario": "E5 bias+net",
+   "rmse": 0.3135374960451934,
+   "energy": 1.9470463495356216,
+   "interv": 0.21777777777777776,
+   "thm2": 0.0,
+   "bound": 1.6026740434989188,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.92,
+   "abar": 0.03,
+   "scenario": "E1 nominal",
+   "rmse": 0.10360518285264515,
+   "energy": 1.3873136934445485,
+   "interv": 0.05477777777777778,
+   "thm2": 1.0,
+   "bound": 0.4859914137736881,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.92,
+   "abar": 0.03,
+   "scenario": "E2 mult (HD)",
+   "rmse": 0.8037284023894122,
+   "energy": 1.8098112231530161,
+   "interv": 0.18244444444444446,
+   "thm2": 1.0,
+   "bound": 2.328327316935371,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.92,
+   "abar": 0.03,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10571143404590903,
+   "energy": 1.4125675571538374,
+   "interv": 0.11788888888888889,
+   "thm2": 1.0,
+   "bound": 0.506187334025355,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.92,
+   "abar": 0.03,
+   "scenario": "E5 bias+net",
+   "rmse": 0.31265751202930736,
+   "energy": 1.9505713313964808,
+   "interv": 0.20244444444444445,
+   "thm2": 0.0,
+   "bound": 1.6777324939401788,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.92,
+   "abar": 0.06,
+   "scenario": "E1 nominal",
+   "rmse": 0.10360474893014061,
+   "energy": 1.3872891894286794,
+   "interv": 0.05466666666666666,
+   "thm2": 1.0,
+   "bound": 0.48627032944144155,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.92,
+   "abar": 0.06,
+   "scenario": "E2 mult (HD)",
+   "rmse": 0.8450728482216567,
+   "energy": 1.8884225328843327,
+   "interv": 0.18533333333333335,
+   "thm2": 1.0,
+   "bound": 2.353533224829101,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.92,
+   "abar": 0.06,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10571172665751113,
+   "energy": 1.4125705716463202,
+   "interv": 0.11788888888888889,
+   "thm2": 1.0,
+   "bound": 0.5064984109980271,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.92,
+   "abar": 0.06,
+   "scenario": "E5 bias+net",
+   "rmse": 0.31339000836694875,
+   "energy": 1.976300413101826,
+   "interv": 0.2117777777777778,
+   "thm2": 0.0,
+   "bound": 1.6736030885626978,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.94,
+   "abar": 0.03,
+   "scenario": "E1 nominal",
+   "rmse": 0.1038836308851597,
+   "energy": 1.4032732965538517,
+   "interv": 0.049444444444444444,
+   "thm2": 1.0,
+   "bound": 0.6452062147979498,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.94,
+   "abar": 0.03,
+   "scenario": "E2 mult (HD)",
+   "rmse": 0.7884705872087229,
+   "energy": 1.9089549941781714,
+   "interv": 0.16711111111111113,
+   "thm2": 1.0,
+   "bound": 2.3745006912894002,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.94,
+   "abar": 0.03,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10597947816415138,
+   "energy": 1.429680582289268,
+   "interv": 0.11166666666666666,
+   "thm2": 1.0,
+   "bound": 0.6643625608431422,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.94,
+   "abar": 0.03,
+   "scenario": "E5 bias+net",
+   "rmse": 0.3129554964591706,
+   "energy": 1.9840618906085998,
+   "interv": 0.1948888888888889,
+   "thm2": 0.0,
+   "bound": 1.8419246456756682,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.94,
+   "abar": 0.06,
+   "scenario": "E1 nominal",
+   "rmse": 0.10388304694273283,
+   "energy": 1.4032318377572588,
+   "interv": 0.04933333333333333,
+   "thm2": 1.0,
+   "bound": 0.6455812539813395,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.94,
+   "abar": 0.06,
+   "scenario": "E2 mult (HD)",
+   "rmse": 0.7532958547795903,
+   "energy": 1.9761776425292168,
+   "interv": 0.17466666666666666,
+   "thm2": 1.0,
+   "bound": 2.375143088387726,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.94,
+   "abar": 0.06,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10598029644018184,
+   "energy": 1.4297367826028804,
+   "interv": 0.11166666666666666,
+   "thm2": 1.0,
+   "bound": 0.6647665053452374,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.94,
+   "abar": 0.06,
+   "scenario": "E5 bias+net",
+   "rmse": 0.3137762062243327,
+   "energy": 2.019618369799666,
+   "interv": 0.2036666666666667,
+   "thm2": 0.0,
+   "bound": 1.8356980193618349,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.96,
+   "abar": 0.03,
+   "scenario": "E1 nominal",
+   "rmse": 0.10424503916952234,
+   "energy": 1.4241905121784437,
+   "interv": 0.044000000000000004,
+   "thm2": 1.0,
+   "bound": 0.9634642841628401,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.96,
+   "abar": 0.03,
+   "scenario": "E2 mult (HD)",
+   "rmse": 0.7806127197251977,
+   "energy": 1.9174469198677788,
+   "interv": 0.15766666666666665,
+   "thm2": 1.0,
+   "bound": 2.603303846033437,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.96,
+   "abar": 0.03,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10632798020028288,
+   "energy": 1.4517090698449837,
+   "interv": 0.10677777777777779,
+   "thm2": 1.0,
+   "bound": 0.9822158702228884,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.96,
+   "abar": 0.03,
+   "scenario": "E5 bias+net",
+   "rmse": 0.3136337227921921,
+   "energy": 2.0375141196847757,
+   "interv": 0.189,
+   "thm2": 1.0,
+   "bound": 2.1928264498031407,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.96,
+   "abar": 0.06,
+   "scenario": "E1 nominal",
+   "rmse": 0.10424460861550673,
+   "energy": 1.4241552563902296,
+   "interv": 0.04388888888888889,
+   "thm2": 1.0,
+   "bound": 0.9640307895425234,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.96,
+   "abar": 0.06,
+   "scenario": "E2 mult (HD)",
+   "rmse": 0.7756013964227235,
+   "energy": 2.0804886924323323,
+   "interv": 0.16522222222222224,
+   "thm2": 1.0,
+   "bound": 2.602690836783464,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.96,
+   "abar": 0.06,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10632907908224827,
+   "energy": 1.451775352352686,
+   "interv": 0.10677777777777779,
+   "thm2": 1.0,
+   "bound": 0.9828062598575321,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.96,
+   "abar": 0.06,
+   "scenario": "E5 bias+net",
+   "rmse": 0.3142711586227674,
+   "energy": 2.077165474661775,
+   "interv": 0.19744444444444442,
+   "thm2": 1.0,
+   "bound": 2.1767813510935685,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.98,
+   "abar": 0.03,
+   "scenario": "E1 nominal",
+   "rmse": 0.10447214408498408,
+   "energy": 1.4372147981962098,
+   "interv": 0.038000000000000006,
+   "thm2": 1.0,
+   "bound": 1.9164130916193103,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.98,
+   "abar": 0.03,
+   "scenario": "E2 mult (HD)",
+   "rmse": 0.7684851076259752,
+   "energy": 2.027847559271912,
+   "interv": 0.14044444444444443,
+   "thm2": 1.0,
+   "bound": 3.262500994935413,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.98,
+   "abar": 0.03,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10655891219185351,
+   "energy": 1.4665009597563974,
+   "interv": 0.10044444444444443,
+   "thm2": 1.0,
+   "bound": 1.9370420844601466,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.98,
+   "abar": 0.03,
+   "scenario": "E5 bias+net",
+   "rmse": 0.31431975963148,
+   "energy": 2.0872982036650076,
+   "interv": 0.17877777777777779,
+   "thm2": 1.0,
+   "bound": 3.217078439231786,
+   "margin": 0.01866293496921756
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.98,
+   "abar": 0.06,
+   "scenario": "E1 nominal",
+   "rmse": 0.10447281235603775,
+   "energy": 1.4372522842912845,
+   "interv": 0.038000000000000006,
+   "thm2": 1.0,
+   "bound": 1.9175614187787906,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.98,
+   "abar": 0.06,
+   "scenario": "E2 mult (HD)",
+   "rmse": 0.820833320896054,
+   "energy": 2.3329682075262097,
+   "interv": 0.14922222222222223,
+   "thm2": 1.0,
+   "bound": 3.367647468640359,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.98,
+   "abar": 0.06,
+   "scenario": "E3 loss 0.5",
+   "rmse": 0.10655911945120991,
+   "energy": 1.4665040107237741,
+   "interv": 0.10044444444444443,
+   "thm2": 1.0,
+   "bound": 1.9382126291383817,
+   "margin": 0.017084122089748632
+  },
+  {
+   "method": "Tuned threshold + filter",
+   "lam": 0.98,
+   "abar": 0.06,
+   "scenario": "E5 bias+net",
+   "rmse": 0.3148000211159689,
+   "energy": 2.131729300526546,
+   "interv": 0.189,
+   "thm2": 1.0,
+   "bound": 3.2229147577637134,
+   "margin": 0.017084122089748632
+  }
+ ],
+ "e13_thm2_all_hold": false,
+ "e13_thm2_by_scen": {
+  "E1 nominal": 1.0,
+  "E2 mult (HD)": 0.9533333333333334,
+  "E3 loss 0.5": 1.0,
+  "E5 bias+net": 0.6866666666666666
+ },
+ "e13_margins": {
+  "{\"lam\": 0.92, \"abar\": 0.03}": {
+   "margin": 0.01866293496921756,
+   "ok": true,
+   "lam": 0.92,
+   "abar": 0.03
+  },
+  "{\"lam\": 0.92, \"abar\": 0.06}": {
+   "margin": 0.017084122089748632,
+   "ok": true,
+   "lam": 0.92,
+   "abar": 0.06
+  },
+  "{\"lam\": 0.94, \"abar\": 0.03}": {
+   "margin": 0.01866293496921756,
+   "ok": true,
+   "lam": 0.94,
+   "abar": 0.03
+  },
+  "{\"lam\": 0.94, \"abar\": 0.06}": {
+   "margin": 0.017084122089748632,
+   "ok": true,
+   "lam": 0.94,
+   "abar": 0.06
+  },
+  "{\"lam\": 0.96, \"abar\": 0.03}": {
+   "margin": 0.01866293496921756,
+   "ok": true,
+   "lam": 0.96,
+   "abar": 0.03
+  },
+  "{\"lam\": 0.96, \"abar\": 0.06}": {
+   "margin": 0.017084122089748632,
+   "ok": true,
+   "lam": 0.96,
+   "abar": 0.06
+  },
+  "{\"lam\": 0.98, \"abar\": 0.03}": {
+   "margin": 0.01866293496921756,
+   "ok": true,
+   "lam": 0.98,
+   "abar": 0.03
+  },
+  "{\"lam\": 0.98, \"abar\": 0.06}": {
+   "margin": 0.017084122089748632,
+   "ok": true,
+   "lam": 0.98,
+   "abar": 0.06
+  },
+  "{\"lam\": 0.9045, \"abar\": 0.03}": {
+   "margin": 0.01866293496921756,
+   "ok": true,
+   "lam": 0.9045,
+   "abar": 0.03
+  },
+  "{\"lam\": 0.9045, \"abar\": 0.06}": {
+   "margin": 0.017084122089748632,
+   "ok": true,
+   "lam": 0.9045,
+   "abar": 0.06
+  }
+ },
+ "TABLE_E13": ": TABLE XV. Safety\u2013performance trade-off (E13, tuned threshold supervisor, 15 seeds). Each cell: RMSE / interventions % / mean a-posteriori Theorem-2 bound on \u2016c\u2016_P (second half of the episode; compare \u2113 = 2.79). Fraction of trajectories in which inequality (13) held at every step: E1 nominal 100 %, E2 mult (HD) 95 %, E3 loss 0.5 100 %, E5 bias+net 69 % (failures occur only where re-anchoring or infeasible steps take the loop outside the assumptions).\n\n| \u03bb | \u0101 | certificate margin (C2) | certified | E1 | E3 loss 0.5 | E5 bias+net | E2 mult\u2020 |\n|---|---|---|---|---|---|---|---|\n| 0.904 | 0.03 | 0.0187 | yes | 0.103 / 5.8 / 0.41 | 0.106 / 12.3 / 0.43 | 0.312 / 20.6 / 1.60 | 0.800 / 18.4 / 2.22 |\n| 0.920 | 0.03 | 0.0187 | yes | 0.104 / 5.5 / 0.49 | 0.106 / 11.8 / 0.51 | 0.313 / 20.2 / 1.68 | 0.804 / 18.2 / 2.33 |\n| 0.940 | 0.03 | 0.0187 | yes | 0.104 / 4.9 / 0.65 | 0.106 / 11.2 / 0.66 | 0.313 / 19.5 / 1.84 | 0.788 / 16.7 / 2.37 |\n| 0.960 | 0.03 | 0.0187 | yes | 0.104 / 4.4 / 0.96 | 0.106 / 10.7 / 0.98 | 0.314 / 18.9 / 2.19 | 0.781 / 15.8 / 2.60 |\n| 0.980 | 0.03 | 0.0187 | yes | 0.104 / 3.8 / 1.92 | 0.107 / 10.0 / 1.94 | 0.314 / 17.9 / 3.22 | 0.768 / 14.0 / 3.26 |\n| 0.904 | 0.06 | 0.0171 | yes | 0.103 / 5.8 / 0.41 | 0.106 / 12.3 / 0.43 | 0.314 / 21.8 / 1.60 | 1.029 / 20.9 / 2.55 |\n| 0.920 | 0.06 | 0.0171 | yes | 0.104 / 5.5 / 0.49 | 0.106 / 11.8 / 0.51 | 0.313 / 21.2 / 1.67 | 0.845 / 18.5 / 2.35 |\n| 0.940 | 0.06 | 0.0171 | yes | 0.104 / 4.9 / 0.65 | 0.106 / 11.2 / 0.66 | 0.314 / 20.4 / 1.84 | 0.753 / 17.5 / 2.38 |\n| 0.960 | 0.06 | 0.0171 | yes | 0.104 / 4.4 / 0.96 | 0.106 / 10.7 / 0.98 | 0.314 / 19.7 / 2.18 | 0.776 / 16.5 / 2.60 |\n| 0.980 | 0.06 | 0.0171 | yes | 0.104 / 3.8 / 1.92 | 0.107 / 10.0 / 1.94 | 0.315 / 18.9 / 3.22 | 0.821 / 14.9 / 3.37 |\n",
+ "TABLE_CHAIN": ": TABLE XVII. Compositional certificate and decentralised SAFE-Switch on chains of N coupled motors (k_c = 0.05; simulations: 5 seeds \u00d7 {network faults; burst bias + network faults} per N). Time: mean per local controller, and summed over all controllers (one core; local controllers are independent and parallelisable).\n\n| N | n | local certificates | min C2 margin | coupling bound (speed) | viol. % | min contain. % | max infeas. % | ms per local step | ms per step (sum) |\n|---|---|---|---|---|---|---|---|---|---|\n| 1 | 2 | hold | 0.0187 | 0.0000 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| 2 | 4 | hold | 0.0131 | 0.0109 | 0 | 100.0 | 0.00 | 1.33 | 2.7 |\n| 4 | 8 | hold | 0.0077 | 0.0218 | 0 | 100.0 | 0.00 | 1.42 | 5.7 |\n| 8 | 16 | hold | 0.0077 | 0.0218 | 0 | 100.0 | 0.00 | 1.41 | 11.3 |\n| 16 | 32 | hold | 0.0077 | 0.0218 | 0 | 100.0 | 0.00 | 1.52 | 24.3 |\n| 32 | 64 | hold | 0.0077 | 0.0218 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n",
+ "chain": [
+  {
+   "N": 1,
+   "kc": 0.05,
+   "all_local_ok": true,
+   "alpha": 0.9474865297305536,
+   "c0": 0.018707132936355782,
+   "qbar": 2.0173588011295034,
+   "ell": 2.785894265232167,
+   "C2_lhs": 2.7672313302629497,
+   "C2_margin": 0.01866293496921756,
+   "coupling_bound": [
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "N": 2,
+   "kc": 0.05,
+   "all_local_ok": true,
+   "alpha": 0.9451562006876901,
+   "c0": 0.02740465183077847,
+   "qbar": 2.0851080883152098,
+   "ell": 2.785894265232167,
+   "C2_lhs": 2.772750387374101,
+   "C2_margin": 0.013143877858066144,
+   "coupling_bound": [
+    4.9688290832264936e-06,
+    0.010899751437306704
+   ]
+  },
+  {
+   "N": 4,
+   "kc": 0.05,
+   "all_local_ok": true,
+   "alpha": 0.9428358174471525,
+   "c0": 0.03608104435805815,
+   "qbar": 2.151013611012033,
+   "ell": 2.785894265232167,
+   "C2_lhs": 2.778146688592532,
+   "C2_margin": 0.007747576639635323,
+   "coupling_bound": [
+    9.929287104007861e-06,
+    0.021773035751554107
+   ]
+  },
+  {
+   "N": 8,
+   "kc": 0.05,
+   "all_local_ok": true,
+   "alpha": 0.942835814977041,
+   "c0": 0.03608105303353739,
+   "qbar": 2.151013675705675,
+   "ell": 2.785894265232167,
+   "C2_lhs": 2.7781466935955783,
+   "C2_margin": 0.007747571636588901,
+   "coupling_bound": [
+    9.929289737966733e-06,
+    0.02177304661844067
+   ]
+  },
+  {
+   "N": 16,
+   "kc": 0.05,
+   "all_local_ok": true,
+   "alpha": 0.942835814977041,
+   "c0": 0.03608105303353739,
+   "qbar": 2.151013675705675,
+   "ell": 2.785894265232167,
+   "C2_lhs": 2.7781466935955783,
+   "C2_margin": 0.007747571636588901,
+   "coupling_bound": [
+    9.929289737966733e-06,
+    0.02177304661844067
+   ]
+  },
+  {
+   "N": 32,
+   "kc": 0.05,
+   "all_local_ok": true,
+   "alpha": 0.942835814977041,
+   "c0": 0.03608105303353739,
+   "qbar": 2.151013675705675,
+   "ell": 2.785894265232167,
+   "C2_lhs": 2.7781466935955783,
+   "C2_margin": 0.007747571636588901,
+   "coupling_bound": [
+    9.929289737966733e-06,
+    0.02177304661844067
+   ]
+  }
+ ],
+ "chain_sims": {
+  "viol": 0.0,
+  "n": 40,
+  "contain_min": 1.0,
+  "t_local": 1.4209827512147843
+ }
+}
